@@ -121,6 +121,7 @@ group :development, :test do
   gem 'haml-i18n-extractor'
   gem "active_merchant-paypal-bogus-gateway"
   gem 'rubocop', require: false
+  gem 'haml-lint', require: false
 end
 
 group :test do
