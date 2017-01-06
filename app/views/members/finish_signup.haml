@@ -34,7 +34,7 @@
         = f.check_box :newsletter, :checked => true
         Subscribe to the #{ENV['GROWSTUFF_SITE_NAME']} newsletter
       .help-inline
-        = render :partial => 'devise/registrations/newsletter_blurb'
+        = render partial: 'devise/registrations/newsletter_blurb'
 
   %div.actions
-    = f.submit 'Continue', :class => 'btn btn-primary'
+    = f.submit 'Continue', class: 'btn btn-primary'

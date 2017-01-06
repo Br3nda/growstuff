@@ -8,7 +8,7 @@
   %h2
     Comment on
     = link_to comment.post.subject, comment.post
-  = render :partial => "single", :locals => { :comment => comment }
+  = render partial: "single", locals: { :comment => comment }
 
 %div.pagination
   = page_entries_info @comments

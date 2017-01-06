@@ -5,16 +5,16 @@
       .hidden-xs
         - Crop.interesting.first(8).each do |c|
           .col-md-3
-            = render :partial => 'crops/thumbnail', :locals => { :crop => c }
+            = render partial: 'crops/thumbnail', locals: { :crop => c }
       .visible-xs
         - Crop.interesting.first(3).each do |c|
           .col-md-3
-            = render :partial => 'crops/thumbnail', :locals => { :crop => c }
+            = render partial: 'crops/thumbnail', locals: { :crop => c }
 
   .col-md-4.hidden-xs
     - cache cache_key_for(Planting) do
       %h2= t('.recently_planted')
-      = render :partial => 'plantings/list', :locals => { :plantings => Planting.interesting.first(6) }
+      = render partial: 'plantings/list', locals: { :plantings => Planting.interesting.first(6) }
 
 .row
   .col-md-12

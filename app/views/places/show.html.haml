@@ -15,7 +15,7 @@
   .row
     - @nearby_members.first(30).each do |member|
       .col-md-4.three-across
-        = render :partial => "members/thumbnail", :locals => { :member => member }
+        = render partial: "members/thumbnail", locals: { :member => member }
   = link_to "View all members >>", members_path
 
   %h3#seeds= "Seeds available for trade near #{@place}"
@@ -27,7 +27,7 @@
     .row
       - crop_id.uniq.first(20).each do |crop|
         .col-md-2.six-across
-          = render :partial => "crops/thumbnail", :locals => { :crop => Crop.find(crop) }
+          = render partial: "crops/thumbnail", locals: { :crop => Crop.find(crop) }
     = link_to "View all seeds >>", seeds_path
   - else
     %p No nearby seeds found

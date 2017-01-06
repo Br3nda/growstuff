@@ -2,7 +2,7 @@
   .post
     .row
       .col-md-1
-        = render :partial => "members/avatar", :locals => { :member => post.author }
+        = render partial: "members/avatar", locals: { :member => post.author }
       .col-md-11
         - if defined?(subject)
           %h3= link_to strip_tags(post.subject), post
