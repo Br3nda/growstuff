@@ -1,0 +1,41 @@
+- content_for :title, "Member admin"
+
+
+.pagination
+  = will_paginate @members
+
+%table.table.table-striped
+  %tr
+    %th Member
+    %th Posts
+    %th Gardens
+    %th Plantings
+    %th Harvests
+    %th Seeds
+  - @members.each do |member|
+    %tr{class: member.admin_approved ? 'approved': 'not-approved'}
+      %td= member.login_name
+      %td
+        #{member.posts.count} Posts
+      %td
+        #{member.gardens.count} Gardens
+      %td
+        #{member.plantings.count} Plantings
+      %td
+        #{member.harvests.count} Harvests
+      %td
+        #{member.seeds.count} Seeds
+        -# #{member.photos.count} Photos
+
+      %td
+        - if member.admin_approved
+          = link_to "Un-approve",
+            admin_member_approve_path(member, admin_approved: !member.admin_approved),
+            method: :post,
+            class: 'btn btn-default'
+        - else
+          = link_to "Review", admin_member_path(member)
+
+.pagination
+  = will_paginate @members
+

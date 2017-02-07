@@ -1,0 +1,20 @@
+%h2= @member.login_name
+
+= link_to @member.admin_approved ? "Un-approve" : "Approve",
+          admin_member_approve_path(@member, admin_approved: !@member.admin_approved),
+          method: :post,
+          class: 'btn btn-default'
+
+%h3 Posts
+- @member.posts.each do |post|
+  %li= post.subject
+
+%h3 Gardens
+- @member.gardens.each do |garden|
+  %li
+    = link_to garden.name, gardens_path(garden)
+    %p= garden.description
+
+%h3 Seeds
+- @member.seeds.each do |seed|
+  = seed.description
