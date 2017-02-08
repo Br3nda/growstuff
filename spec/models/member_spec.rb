@@ -425,4 +425,14 @@ describe 'member' do
       member.newsletter_unsubscribe(gb, true)
     end
   end
+
+  context 'admin approval' do
+    let(:member) { create :member }
+    it 'appears in approved results' do
+      expect(Member.approved).not_to include(member)
+      member.admin_approved = true
+      member.save!
+      expect(Member.approved).to include(member)
+    end
+  end
 end

@@ -31,6 +31,7 @@ class Member < ActiveRecord::Base
 
   default_scope { order("lower(login_name) asc") }
   scope :confirmed, -> { where('confirmed_at IS NOT NULL') }
+  scope :approved, -> { where(admin_approved: true) }
   scope :located, -> { where("location <> '' and latitude IS NOT NULL and longitude IS NOT NULL") }
   scope :recently_signed_in, -> { reorder('updated_at DESC') }
   scope :recently_joined, -> { reorder("confirmed_at desc") }
@@ -202,7 +203,7 @@ class Member < ActiveRecord::Base
   def self.interesting
     howmany = 12 # max number to find
     interesting_members = []
-    Member.confirmed.located.recently_signed_in.each do |m|
+    Member.confirmed.approved.located.recently_signed_in.each do |m|
       break if interesting_members.size == howmany
       interesting_members.push(m) if m.interesting?
     end
