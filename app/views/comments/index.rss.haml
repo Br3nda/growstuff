@@ -7,15 +7,11 @@
       %item
         %title Comment by #{comment.author.login_name} on #{comment.post.subject}
         %description
-          :escaped
-            <p>
+          %p
             Comment on
-            #{ link_to comment.post.subject, post_url(comment.post) }
-            </p>
-
+            = link_to comment.post.subject, post_url(comment.post)
           :escaped_markdown
             #{ strip_tags comment.body }
-
         %pubdate= comment.created_at.to_s(:rfc822)
         %link= post_url(comment.post)
         %guid= comment_url(comment)

@@ -9,11 +9,10 @@
         %title #{planting.crop} in #{planting.location}
         %pubdate= planting.created_at.to_s(:rfc822)
         %description
-          :escaped
-            <p>Quantity: #{planting.quantity ? planting.quantity : 'unknown' }</p>
-            <p>Planted on: #{planting.planted_at ? planting.planted_at : 'unknown' }</p>
-            <p>Sunniness: #{planting.sunniness ? planting.sunniness : 'unknown' }</p>
-            <p>Planted from: #{planting.planted_from ? planting.planted_from : 'unknown' }</p>
+          %p Quantity: #{planting.quantity ? planting.quantity : 'unknown' }
+          %p Planted on: #{planting.planted_at ? planting.planted_at : 'unknown' }
+          %p Sunniness: #{planting.sunniness ? planting.sunniness : 'unknown' }
+          %p Planted from: #{planting.planted_from ? planting.planted_from : 'unknown' }
           :escaped_markdown
             #{ strip_tags planting.description }
         %link= planting_url(planting)

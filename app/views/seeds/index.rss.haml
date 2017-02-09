@@ -9,15 +9,13 @@
         %title #{seed.owner}'s #{seed.crop} seeds
         %pubDate= seed.created_at.to_s(:rfc822)
         %description
-          :escaped
-            <p>Quantity: #{seed.quantity ? seed.quantity : 'unknown' }</p>
-            <p>Plant before: #{seed.plant_before ? seed.plant_before : 'unknown' }</p>
-            <p>Organic? #{seed.organic}</p>
-            <p>GMO? #{seed.gmo}</p>
-            <p>Heirloom? #{seed.heirloom}</p>
+          %p Quantity: #{seed.quantity ? seed.quantity : 'unknown'}
+          %p Plant before: #{seed.plant_before ? seed.plant_before : 'unknown'}
+          %p Organic? #{seed.organic}
+          %p GMO? #{seed.gmo}
+          %p Heirloom? #{seed.heirloom}
           - if seed.tradable?
-            :escaped
-              <p>Will trade #{seed.tradable_to} from #{seed.owner.location ? seed.owner.location : 'unknown location'}</p>
+            %p Will trade #{seed.tradable_to} from #{seed.owner.location ? seed.owner.location : 'unknown location'}
 
           :escaped_markdown
             #{ strip_tags seed.description }
