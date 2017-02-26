@@ -7,6 +7,7 @@ class Garden < ActiveRecord::Base
   belongs_to :owner, class_name: 'Member', foreign_key: 'owner_id'
   has_many :plantings, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :crops, through: :plantings
+  has_many :squares
 
   # set up geocoding
   geocoded_by :location

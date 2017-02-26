@@ -24,6 +24,7 @@
                       method: :put,
                       class: 'btn btn-default'
           = link_to 'Edit garden', edit_garden_path(@garden), class: 'btn btn-default'
+          = link_to 'Map', garden_squares_path(@garden), class: 'btn btn-default'
         - if can?(:destroy, @garden)
           = link_to 'Delete garden', @garden,
                     method: :delete,
