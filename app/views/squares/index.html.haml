@@ -1,19 +1,21 @@
 
 %h2 Garden map
 
-= form_for(@garden, html: { class: "form-horizontal", role: "form" }) do |f|
-  .form-group
-    = f.label :width, 'Width', class: 'control-label col-md-2'
-    .col-md-2
-      = f.number_field :width, class: 'form-control'
-    = f.label :length, 'Length', class: 'control-label col-md-2'
-    .col-md-2
-      = f.number_field :length, class: 'form-control'
+.row
+  .col-md-6
+    = form_for(@garden, html: { class: "form-horizontal", role: "form" }) do |f|
+      .form-group
+        = f.label :width, 'Width', class: 'control-label col-md-2'
+        .col-md-2
+          = f.number_field :width, class: 'form-control'
+        = f.label :length, 'Length', class: 'control-label col-md-2'
+        .col-md-2
+          = f.number_field :length, class: 'form-control'
+.row
+  .col-md-2
+    - @plantings.each do |planting|
+      = radio_button_tag(:planting, planting.id)
+      = planting.crop.name
+  .col-md-4
+    #gardenmap
 
-- @garden.plantings.current.each do |planting|
-  %li
-    = planting.to_s
-
-- if @garden.width && @garden.length
-  = 1..@garden.width.each do |x|
-    = x
