@@ -14,13 +14,13 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.haml
-      format.json {
+      format.json do
         render json: @members.to_json(only: [
                                         :id, :login_name,
                                         :slug, :bio, :created_at,
                                         :location, :latitude, :longitude
                                       ])
-      }
+      end
     end
   end
 
@@ -38,18 +38,18 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.haml
-      format.json {
+      format.json do
         render json: @member.to_json(only: [
                                        :id, :login_name, :bio,
                                        :created_at, :slug, :location,
                                        :latitude, :longitude
                                      ])
-      }
-      format.rss {
+      end
+      format.rss do
         render(
           layout: false,
           locals: { member: @member }
-        )}
+        ) end
     end
   end
 

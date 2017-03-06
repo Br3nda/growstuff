@@ -17,9 +17,9 @@ describe Comment do
     let(:comment) { FactoryGirl.create(:comment) }
 
     it "sends a notification when a comment is posted" do
-      expect {
+      expect do
         FactoryGirl.create(:comment)
-      }.to change(Notification, :count).by(1)
+      end.to change(Notification, :count).by(1)
     end
 
     it "sets the notification fields" do
@@ -35,9 +35,9 @@ describe Comment do
     it "doesn't send notifications to yourself" do
       @m = FactoryGirl.create(:member)
       @p = FactoryGirl.create(:post, author: @m)
-      expect {
+      expect do
         FactoryGirl.create(:comment, post: @p, author: @m)
-      }.to change(Notification, :count).by(0)
+      end.to change(Notification, :count).by(0)
     end
   end
 

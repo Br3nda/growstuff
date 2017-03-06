@@ -41,12 +41,12 @@ describe OrderItemsController do
       @member = FactoryGirl.create(:member)
       sign_in @member
       @product = FactoryGirl.create(:product)
-      expect {
+      expect do
         post :create, order_item: {
           product_id: @product.id,
           price: @product.min_price
         }
-      }.to change(Order, :count).by(1)
+      end.to change(Order, :count).by(1)
       OrderItem.last.order.should be_an_instance_of Order
     end
 
@@ -54,13 +54,13 @@ describe OrderItemsController do
       it "converts 3.33 to 333 cents" do
         @order = FactoryGirl.create(:order, member: @member)
         @product = FactoryGirl.create(:product, min_price: 1)
-        expect {
+        expect do
           post :create, order_item: {
             order_id: @order.id,
             product_id: @product.id,
             price: 3.33
           }
-        }.to change(OrderItem, :count).by(1)
+        end.to change(OrderItem, :count).by(1)
         OrderItem.last.price.should eq 333
       end
     end

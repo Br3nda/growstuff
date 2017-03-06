@@ -4,9 +4,10 @@ describe Planting do
   let(:crop) { FactoryGirl.create(:tomato) }
   let(:garden_owner) { FactoryGirl.create(:member) }
   let(:garden) { FactoryGirl.create(:garden, owner: garden_owner) }
-  let(:planting) {
+  let(:planting) do
     FactoryGirl.create(:planting,
-      crop: crop, garden: garden)}
+      crop: crop, garden: garden)
+  end
 
   it 'has an owner' do
     planting.owner.should be_an_instance_of Member

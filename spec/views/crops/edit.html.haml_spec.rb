@@ -14,9 +14,9 @@ require 'rails_helper'
 
 describe "crops/edit" do
   before(:each) do
-    controller.stub(:current_user) {
+    controller.stub(:current_user) do
       FactoryGirl.create(:crop_wrangling_member)
-    }
+    end
     @crop = FactoryGirl.create(:maize)
     3.times do
       @crop.scientific_names.build
