@@ -7,8 +7,22 @@ cache:
     - tmp/cache/assets/test/sprockets
 env:
   matrix:
-    - GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch STATIC_CHECKS=false
-    - GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch STATIC_CHECKS=false
+    - TESTFOLDER=controllers GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch
+    - TESTFOLDER=controllers GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch
+    - TESTFOLDER=features GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch
+    - TESTFOLDER=features GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch
+    - TESTFOLDER=helpers GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch
+    - TESTFOLDER=helpers GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch
+    - TESTFOLDER=mailers GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch
+    - TESTFOLDER=mailers GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch
+    - TESTFOLDER=models GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch
+    - TESTFOLDER=models GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch
+    - TESTFOLDER=requests GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch
+    - TESTFOLDER=requests GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch
+    - TESTFOLDER=routing GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch
+    - TESTFOLDER=routing GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch
+    - TESTFOLDER=views GROWSTUFF_ELASTICSEARCH='true' RSPEC_TAG=elasticsearch
+    - TESTFOLDER=views GROWSTUFF_ELASTICSEARCH='false' RSPEC_TAG=~elasticsearch
     - STATIC_CHECKS=true
   global:
     - GROWSTUFF_SITE_NAME="Growstuff (travis)"
@@ -36,7 +50,7 @@ script:
       ./script/check_static.rb
     else
       bundle exec rake db:migrate --trace;
-      bundle exec rspec --tag $RSPEC_TAG spec/;
+      bundle exec rspec --tag $RSPEC_TAG spec/$TESTFOLDER;
       bundle exec rake jasmine:ci;
     fi;
   - set +e
