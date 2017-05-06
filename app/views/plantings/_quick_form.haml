@@ -1,0 +1,16 @@
+%p
+  %button{onclick: "$('#planting-quick-form').show();", class: 'btn btn-primary'}
+    quick plant
+
+#planting-quick-form.modal{role: 'dialog'}
+  .col-xs-12.col-sm-3.modal-content
+    = form_for(planting, remote: true, format: :json) do |f|
+      = f.hidden_field :garden_id, value: planting.garden_id
+      .modal-header
+        = f.label :crop, 'What did you plant?'
+      .modal-body
+        = auto_suggest planting, :crop
+      .modal-footer
+        = f.submit 'Plant', class: 'btn btn-primary'
+        %button{onclick: "$('#planting-quick-form').hide();"}
+          cancel

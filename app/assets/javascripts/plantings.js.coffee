@@ -4,3 +4,10 @@
 
 jQuery ->
   $('.add-datepicker').datepicker('format' : 'yyyy-mm-dd')
+
+  $('#planting-quick-form').on("ajax:success", (e, data, status, xhr) ->
+    $('#crop').empty()
+    $('#planting-quick-form').hide()
+    location.reload()
+  ).on "ajax:error", (e, xhr, status, error) ->
+    $('#planting-quick-form').append "<p>ERROR</p>"

@@ -51,6 +51,7 @@ class PlantingsController < ApplicationController
   def create
     @planting = Planting.new(planting_params)
     @planting.owner = current_member
+    @planting.planted_at = Time.zone.today unless @planting.planted_at
     @planting.calc_and_set_days_before_maturity
     @planting.save
     respond_with(@planting)
