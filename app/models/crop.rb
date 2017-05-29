@@ -22,23 +22,13 @@ class Crop < ActiveRecord::Base
   before_destroy { |crop| crop.posts.clear }
 
   default_scope { order("lower(crops.name) asc") }
-  scope :recent, lambda {
-    approved.reorder("created_at desc")
-  }
-  scope :toplevel, lambda {
-    approved.where(parent_id: nil)
-  }
-  scope :popular, lambda {
-    approved.reorder("plantings_count desc, lower(name) asc")
-  }
-  scope :randomized, lambda {
-    # ok on sqlite and psql, but not on mysql
-    approved.reorder('random()')
-  }
+  scope :recent, -> { approved.reorder(created_at: :desc) }
+  scope :toplevel, -> { approved.where(parent_id: nil) }
+  scope :popular, -> { approved.reorder("plantings_count desc, lower(name) asc") }
+  scope :randomized, -> { approved.reorder('random()') }
   scope :pending_approval, -> { where(approval_status: "pending") }
   scope :approved, -> { where(approval_status: "approved") }
   scope :rejected, -> { where(approval_status: "rejected") }
-
   scope :interesting, -> { approved.has_photos }
   scope :has_photos, -> { includes(:photos).where.not(photos: { id: nil }) }
 
@@ -167,8 +157,8 @@ class Crop < ActiveRecord::Base
   # value: count of how many times it's been used by harvests
   def popular_plant_parts
     PlantPart.joins(:harvests)
-      .where("crop_id = ?", id)
-      .order("count_harvests_id DESC")
+      .where(crop_id: id)
+      .order(count_harvests_id: :desc)
       .group("plant_parts.id", "plant_parts.name")
       .count("harvests.id")
   end
@@ -208,43 +198,7 @@ class Crop < ActiveRecord::Base
 
   # Crop.search(string)
   def self.search(query)
-    if ENV['GROWSTUFF_ELASTICSEARCH'] == "true"
-      search_str = query.nil? ? "" : query.downcase
-      response = __elasticsearch__.search( # Finds documents which match any field, but uses the _score from
-        # the best field insead of adding up _score from each field.
-        query: {
-          multi_match: {
-            query: search_str.to_s,
-            analyzer: "standard",
-            fields: ["name",
-                     "scientific_names.scientific_name",
-                     "alternate_names.name"]
-          }
-        },
-        filter: {
-          term: { approval_status: "approved" }
-        },
-        size: 50
-      )
-      response.records.to_a
-    else
-      # if we don't have elasticsearch, just do a basic SQL query.
-      # also, make sure it's an actual array not an activerecord
-      # collection, so it matches what we get from elasticsearch and we can
-      # manipulate it in the same ways (eg. deleting elements without deleting
-      # the whole record from the db)
-      matches = Crop.approved.where("name ILIKE ?", "%#{query}%").to_a
-
-      # we want to make sure that exact matches come first, even if not
-      # using elasticsearch (eg. in development)
-      exact_match = Crop.approved.find_by(name: query)
-      if exact_match
-        matches.delete(exact_match)
-        matches.unshift(exact_match)
-      end
-
-      matches
-    end
+    CropSearch.search(query)
   end
 
   def self.case_insensitive_name(name)
