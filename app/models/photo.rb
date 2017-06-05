@@ -2,6 +2,8 @@ require_relative '../constants/photo_models.rb'
 class Photo < ActiveRecord::Base
   belongs_to :owner, class_name: 'Member'
 
+  scope :by_date, ->(date) { where("created_at >= ? AND created_at < ?", date, date + 1.day) }
+
   Growstuff::Constants::PhotoModels.relations.each do |relation|
     has_and_belongs_to_many relation.to_sym # rubocop:disable Rails/HasAndBelongsToMany
   end

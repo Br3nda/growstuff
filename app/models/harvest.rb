@@ -13,7 +13,6 @@ class Harvest < ActiveRecord::Base
   validates :crop, approved: true
 
   validates :crop, presence: { message: "must be present and exist in our database" }
-
   validates :plant_part, presence: { message: "must be present and exist in our database" }
 
   validates :quantity,
@@ -22,6 +21,8 @@ class Harvest < ActiveRecord::Base
       greater_than_or_equal_to: 0
     },
     allow_nil: true
+
+  scope :by_date, ->(date) { where("harvested_at >= ? AND harvested_at < ?", date, date + 1.day) }
 
   UNITS_VALUES = {
     "individual" => "individual",

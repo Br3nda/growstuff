@@ -25,7 +25,7 @@ class Member < ActiveRecord::Base
   has_one  :account
   has_one  :account_type, through: :account
 
-  has_many :photos
+  has_many :photos, foreign_key: 'owner_id'
 
   has_many :requested_crops, class_name: Crop, foreign_key: 'requester_id'
   has_many :likes, dependent: :destroy

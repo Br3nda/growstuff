@@ -11,6 +11,7 @@ class Planting < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
   scope :finished, -> { where(finished: true) }
   scope :current, -> { where(finished: false) }
+  scope :by_date, ->(date) { where("planted_at >= ? AND planted_at < ?", date, date + 1.day) }
 
   scope :interesting, -> { has_photos.one_per_owner }
   scope :one_per_owner, lambda {

@@ -1,0 +1,11 @@
+- if photo.associations?
+  This photo depicts:
+  %ul
+    - photo.plantings.each do |planting|
+      %li= t('photos.show.planting', planting: planting.to_s, owner: planting.owner.to_s)
+    - photo.harvests.each do |harvest|
+      %li= t('photos.show.harvest', crop: harvest.crop.name, owner: harvest.owner.to_s)
+    - photo.gardens.each do |garden|
+      %li= t('photos.show.garden', garden: garden.to_s, owner: garden.owner.to_s)
+    - photo.seeds.each do |seed|
+      %li=t('photos.show.seed', seed: seed.to_s, owner: seed.owner.to_s)

@@ -458,6 +458,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.3, >= 3.3.3)
+    simple_calendar (2.2.5)
+      rails (>= 3.0)
     simplecov (0.12.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -588,12 +590,12 @@ DEPENDENCIES
   sass-rails (~> 5.0.4)
   selenium-webdriver
   sidekiq
+  simple_calendar (~> 2.0)
   sparkpost_rails
   uglifier (~> 2.7.2)
   unicorn
   webrat
   will_paginate (~> 3.0)
-
 
 RUBY VERSION
    ruby 2.3.4p301

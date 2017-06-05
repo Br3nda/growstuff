@@ -1,0 +1,17 @@
+= month_calendar do |date|
+  .calendar-day
+    .number= date.strftime("%d")
+    .plantings
+      - @member.plantings.includes(:crop, :garden, :owner, :photos).by_date(date).each do |planting|
+        - if planting.photos.size.positive?
+          = render partial: 'plantings/image_with_popover', locals: { planting: planting }
+        = link_to planting.crop.name, planting
+    .harvests
+      - @member.harvests.has_photos.includes(:crop, :owner).by_date(date).each do |harvest|
+        - if harvest.photos.size.positive?
+          = render partial: 'harvests/image_with_popover', locals: { harvest: harvest }
+        = link_to harvest.crop.name, harvest
+    .photos
+      - @member.photos.by_date(date).each do |photo|
+        = render partial: 'photos/image_with_popover', locals: { photo: photo }
+

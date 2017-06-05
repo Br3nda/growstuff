@@ -38,6 +38,8 @@
             %li= link_to t('.seeds'), seeds_path
             %li= link_to t('.plantings'), plantings_path
             %li= link_to t('.harvests'), harvests_path
+
+
         %li.dropdown<
           %a.dropdown-toggle{ 'data-toggle': 'dropdown', href: members_path }
             = t('.community')
@@ -78,6 +80,7 @@
                 - if current_member.role?(:admin)
                   %li= link_to t('.admin'), admin_path
 
+          %li= link_to 'Garden Diary', diary_path
 
           %li= link_to t('.sign_out'), destroy_member_session_path, method: :delete
 

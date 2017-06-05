@@ -1,0 +1,10 @@
+- cache photo do
+  = link_to image_tag(photo.thumbnail_url,
+                      alt: photo.to_s,
+                      class: 'image-responsive crop-image'),
+            photo,
+            rel: "popover",
+            'data-trigger': 'hover',
+            'data-title': photo.to_s,
+            'data-content': render(partial: 'photos/popover', locals: { photo: photo }),
+            'data-html': true

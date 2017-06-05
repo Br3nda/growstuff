@@ -1,0 +1,7 @@
+%p
+  %small
+    Quantity:
+    = harvest.quantity ? harvest.quantity : 'unknown'
+    %br/
+    Planted on:
+    = harvest.harvested_at.to_s

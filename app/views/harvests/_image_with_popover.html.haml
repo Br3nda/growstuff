@@ -1,0 +1,10 @@
+- cache harvest do
+  = link_to image_tag(harvest.photos.present? ? harvest.photos.first.thumbnail_url : 'placeholder_150.png',
+                      alt: harvest.to_s,
+                      class: 'image-responsive crop-image'),
+            harvest,
+            rel: "popover",
+            'data-trigger': 'hover',
+            'data-title': harvest.to_s,
+            'data-content': render(partial: 'harvests/popover', locals: { harvest: harvest }),
+            'data-html': true

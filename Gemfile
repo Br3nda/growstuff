@@ -88,6 +88,9 @@ gem 'rake', '>= 10.0.0'
 # locale based flash notices for controllers
 gem "responders"
 
+# Displays calendar in diaries
+gem "simple_calendar", "~> 2.0"
+
 group :production, :staging do
   gem 'bonsai-elasticsearch-rails' # Integration with Bonsa-Elasticsearch on heroku
   gem 'dalli'

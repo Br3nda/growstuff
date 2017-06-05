@@ -24,6 +24,10 @@ Growstuff::Application.routes.draw do
   resources :plantings do
     resources :harvests
   end
+
+  get '/diary' => 'diary#index'
+  get '/diary/:year/:week' => 'diary#show'
+
   get '/plantings/owner/:owner' => 'plantings#index', :as => 'plantings_by_owner'
   get '/plantings/crop/:crop' => 'plantings#index', :as => 'plantings_by_crop'
 
