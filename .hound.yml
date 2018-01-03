@@ -7,4 +7,5 @@ haml:
 scss:
   config_file: .scss-lint.yml
 eslint:
+  ignore_file: .eslintignore
   config_file: .eslintrc
