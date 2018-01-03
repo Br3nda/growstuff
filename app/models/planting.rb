@@ -72,10 +72,6 @@ class Planting < ActiveRecord::Base
     I18n.t('plantings.string', crop: crop.name, garden: garden.name, owner: owner)
   end
 
-  def default_photo
-    photos.order(created_at: :desc).first
-  end
-
   def planted?
     planted_at.present? && planted_at <= Date.current
   end
