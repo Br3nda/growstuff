@@ -9,3 +9,5 @@ scss:
 eslint:
   ignore_file: .eslintignore
   config_file: .eslintrc
+jshint:
+  enabled: false
