@@ -3,7 +3,8 @@ class Planting < ActiveRecord::Base
   include PhotoCapable
   friendly_id :planting_slug, use: %i(slugged finders)
 
-  # Constants
+  ##
+  ## Constants
   SUNNINESS_VALUES = %w(sun semi-shade shade).freeze
   PLANTED_FROM_VALUES = [
     'seed', 'seedling', 'cutting', 'root division', 'runner',
@@ -15,6 +16,8 @@ class Planting < ActiveRecord::Base
   ## Triggers
   before_save :calculate_lifespan
 
+  ##
+  ## Relationships
   belongs_to :garden
   belongs_to :owner, class_name: 'Member', counter_cache: true
   belongs_to :crop, counter_cache: true

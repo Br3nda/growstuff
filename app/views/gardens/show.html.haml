@@ -37,6 +37,10 @@
               Why not
               = link_to 'tell us more.', edit_garden_path(@garden)
 
+
+    %h2 Garden Map
+    = react_component("Garden", {garden: @garden, plantings: @garden.plantings.current})
+
     %h3 Garden timeline
     .row
       = timeline garden_timeline_path(@garden), adapter: "google"
