@@ -1,7 +1,7 @@
 = content_for :title, "#{@garden.owner}'s #{@garden}"
 
 - content_for :opengraph do
-  - @garden.photos.each do |photo|
+  - @garden.photos.order(created_at: :desc).each do |photo|
     = tag("meta", property: "og:image", content: photo.fullsize_url)
   - if @garden.description
     = tag("meta", property: "og:description", content: og_description(@garden.description))
@@ -41,6 +41,10 @@
     .row
       = timeline garden_timeline_path(@garden), adapter: "google"
 
+    %h3 Garden layout
+    .row
+      = render 'layout', garden: @garden
+
     %h3 Current plantings in garden
     .row
       - if @current_plantings.size.positive?
@@ -50,12 +54,19 @@
       - else
         .col-md-12
           %p Nothing is currently planted here.
+
+
+    - if @garden.photos.size.positive?
+      %h3= localize_plural(@garden.photos, Photo)
+      .row
+        = render 'photos', garden: @garden
+
     %h3 Previously planted in this garden
     .row
       - if @finished_plantings.size.positive?
         - @finished_plantings.each do |planting|
           .col-xs-6.col-md-2
-            = render partial: "plantings/thumbnail", locals: { planting: planting }
+            = render "plantings/thumbnail", planting: planting
       - else
         %p Nothing has been planted here.
   .col-md-3
@@ -102,9 +113,3 @@
         class: 'btn btn-primary' do
           %span.glyphicon.glyphicon-camera{ title: "Add photo" }
           Add photo
-    - if @garden.photos.size.positive?
-      %h3= localize_plural(@garden.photos, Photo)
-      .row
-        - @garden.photos.includes(:owner).each do |photo|
-          .col-xs-6
-            = render partial: 'photos/thumbnail', locals: { photo: photo }

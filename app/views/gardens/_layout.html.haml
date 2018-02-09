@@ -1,0 +1,10 @@
+= form_for(@garden, html: { class: "form-horizontal", role: "form" }) do |f|
+  .col-md-2
+    = f.label :width, class: 'control-label col-md-2'
+    = f.number_field :width, class: 'form-control', maxlength: 255, required: "required"
+  .col-md-2
+    = f.label :length, class: 'control-label col-md-2'
+    = f.number_field :length, class: 'form-control', maxlength: 255, required: "required"
+
+= garden.width
+= garden.length

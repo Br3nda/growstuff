@@ -1,0 +1,3 @@
+- @garden.photos.order(date_taken: :desc).includes(:owner).each do |photo|
+  .col-xs-6.col-md-2
+    = render 'photos/thumbnail', photo: photo
