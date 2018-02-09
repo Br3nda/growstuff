@@ -11,7 +11,7 @@
 - content_for :scripts do
   = javascript_include_tag "charts"
 
-= render partial: 'approval_status_message', locals: { crop: @crop }
+= render 'approval_status_message', crop: @crop
 
 - if @crop.approved?
   - content_for :buttonbar do
@@ -97,12 +97,7 @@
 
   .col-md-3
 
-    = render partial: 'wrangle', locals: { crop: @crop }
-
-    %h4 How to grow #{@crop.name.pluralize}
-
-    = render 'grown_for', crop: @crop
-    = render 'planting_advice', crop: @crop
+    = render 'wrangle', crop: @crop
 
     = render 'scientific_names', crop: @crop
     = render 'alternate_names', crop: @crop
