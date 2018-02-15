@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205000612) do
+ActiveRecord::Schema.define(version: 20180209084748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,6 +196,15 @@ ActiveRecord::Schema.define(version: 20180205000612) do
   add_index "crops_posts", ["crop_id", "post_id"], name: "index_crops_posts_on_crop_id_and_post_id", using: :btree
   add_index "crops_posts", ["crop_id"], name: "index_crops_posts_on_crop_id", using: :btree
 
+  create_table "event_types", force: :cascade do |t|
+    t.text     "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "event_types", ["name"], name: "index_event_types_on_name", using: :btree
+
   create_table "follows", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -227,6 +236,8 @@ ActiveRecord::Schema.define(version: 20180205000612) do
     t.float    "longitude"
     t.decimal  "area"
     t.string   "area_unit"
+    t.integer  "width"
+    t.integer  "length"
   end
 
   add_index "gardens", ["owner_id"], name: "index_gardens_on_owner_id", using: :btree
@@ -348,6 +359,14 @@ ActiveRecord::Schema.define(version: 20180205000612) do
     t.integer "product_id"
   end
 
+  create_table "photo_associations", force: :cascade do |t|
+    t.integer  "photos_id"
+    t.integer  "associated_id"
+    t.string   "associated_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "photographings", force: :cascade do |t|
     t.integer  "photo_id",            null: false
     t.integer  "photographable_id",   null: false
@@ -356,8 +375,8 @@ ActiveRecord::Schema.define(version: 20180205000612) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "photographings", ["photographable_id", "photographable_type", "photo_id"], name: "items_to_photos_idx", unique: true, using: :btree
-  add_index "photographings", ["photographable_id", "photographable_type"], name: "photographable_idx", using: :btree
+  add_index "photographings", ["photographable_id", "photographable_type", "photo_id"], name: "polymorphic_many_to_many_idx", unique: true, using: :btree
+  add_index "photographings", ["photographable_id", "photographable_type"], name: "polymorphic_photographable_idx", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.integer  "owner_id",        null: false
@@ -409,8 +428,12 @@ ActiveRecord::Schema.define(version: 20180205000612) do
     t.integer  "lifespan"
     t.integer  "days_to_first_harvest"
     t.integer  "days_to_last_harvest"
+    t.boolean  "failed"
+    t.text     "failure_cause"
+    t.integer  "parent_seed_id"
   end
 
+  add_index "plantings", ["failed"], name: "index_plantings_on_failed", using: :btree
   add_index "plantings", ["slug"], name: "index_plantings_on_slug", unique: true, using: :btree
 
   create_table "posts", force: :cascade do |t|
@@ -459,10 +482,24 @@ ActiveRecord::Schema.define(version: 20180205000612) do
     t.text     "organic",                 default: "unknown"
     t.text     "gmo",                     default: "unknown"
     t.text     "heirloom",                default: "unknown"
+    t.integer  "parent_planting_id"
+    t.boolean  "finished",                default: false
+    t.datetime "finished_at"
   end
 
   add_index "seeds", ["slug"], name: "index_seeds_on_slug", unique: true, using: :btree
 
+  create_table "squares", force: :cascade do |t|
+    t.integer  "garden_id"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "planting_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   add_foreign_key "harvests", "plantings"
   add_foreign_key "photographings", "photos"
+  add_foreign_key "plantings", "seeds", column: "parent_seed_id", name: "parent_seed", on_delete: :nullify
+  add_foreign_key "seeds", "plantings", column: "parent_planting_id", name: "parent_planting", on_delete: :nullify
 end
