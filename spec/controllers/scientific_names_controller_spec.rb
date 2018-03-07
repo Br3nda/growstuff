@@ -3,7 +3,7 @@ require 'rails_helper'
 describe ScientificNamesController do
   login_member(:crop_wrangling_member)
 
-  before(:each) do
+  before do
     @crop = FactoryBot.create(:tomato)
   end
 

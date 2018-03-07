@@ -12,7 +12,7 @@ describe Charts::GardensController do
     end
   end
   context "when signed in" do
-    before(:each) { sign_in member }
+    before { sign_in member }
 
     let!(:member) { FactoryBot.create(:member) }
     describe 'GET timeline' do

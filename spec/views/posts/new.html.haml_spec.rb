@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "posts/new" do
-  before(:each) do
+  before do
     @author = FactoryBot.create(:member)
     assign(:post, FactoryBot.create(:post, author: @author))
     # assign(:forum, Forum.new)
@@ -33,7 +33,7 @@ describe "posts/new" do
   end
 
   context "forum specified" do
-    before(:each) do
+    before do
       @forum = assign(:forum, FactoryBot.create(:forum))
       assign(:post, FactoryBot.create(:post, forum: @forum))
       render

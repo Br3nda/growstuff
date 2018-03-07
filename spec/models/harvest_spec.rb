@@ -223,7 +223,7 @@ describe Harvest do
   end
 
   context 'photos' do
-    before :each do
+    before do
       @harvest = FactoryBot.create(:harvest)
     end
 
@@ -233,7 +233,7 @@ describe Harvest do
       end
 
       context 'and with a crop(planting) photo' do
-        before :each do
+        before do
           @photo = FactoryBot.create(:photo)
           @planting = FactoryBot.create(:planting, crop: @harvest.crop)
           @planting.photos << @photo
@@ -271,7 +271,7 @@ describe Harvest do
       end
 
       context 'and with a crop(planting) photo' do
-        before :each do
+        before do
           @crop_photo = FactoryBot.create(:photo)
           @planting = FactoryBot.create(:planting, crop: @harvest.crop)
           @planting.photos << @crop_photo
@@ -283,7 +283,7 @@ describe Harvest do
       end
 
       context 'and a second photo' do
-        before :each do
+        before do
           @photo2 = FactoryBot.create(:photo)
           @harvest.photos << @photo2
         end

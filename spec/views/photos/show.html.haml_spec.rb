@@ -45,7 +45,7 @@ describe "photos/show" do
   end
 
   context "signed in as owner" do
-    before(:each) do
+    before do
       controller.stub(:current_user) { member }
       render
     end
@@ -57,7 +57,7 @@ describe "photos/show" do
   end
 
   context "signed in as another member" do
-    before(:each) do
+    before do
       controller.stub(:current_user) { FactoryBot.create :member }
       render
     end
@@ -66,7 +66,7 @@ describe "photos/show" do
   end
 
   context "not signed in" do
-    before(:each) do
+    before do
       controller.stub(:current_user) { nil }
       render
     end
@@ -75,7 +75,7 @@ describe "photos/show" do
   end
 
   context "CC-licensed photo" do
-    before(:each) do
+    before do
       controller.stub(:current_user) { nil }
       # @photo = assign(:photo, FactoryBot.create(:photo, owner: @member))
       @photo.harvests << harvest
@@ -91,7 +91,7 @@ describe "photos/show" do
   end
 
   context "unlicensed photo" do
-    before(:each) do
+    before do
       controller.stub(:current_user) { nil }
       @photo = assign(:photo, FactoryBot.create(:unlicensed_photo))
       render

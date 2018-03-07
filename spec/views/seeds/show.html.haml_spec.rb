@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "seeds/show" do
-  before(:each) do
+  before do
     controller.stub(:current_user) { nil }
     @seed = FactoryBot.create(:seed)
     assign(:seed, @seed)
@@ -14,7 +14,7 @@ describe "seeds/show" do
   end
 
   context "tradable" do
-    before(:each) do
+    before do
       @owner = FactoryBot.create(:london_member)
       assign(:seed, FactoryBot.create(:tradable_seed,
         owner: @owner))
@@ -36,7 +36,7 @@ describe "seeds/show" do
     end
 
     context 'with no location' do
-      before(:each) do
+      before do
         @owner = FactoryBot.create(:member) # no location
         sign_in @owner
         controller.stub(:current_user) { @owner }

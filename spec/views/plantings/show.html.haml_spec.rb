@@ -10,7 +10,7 @@ describe "plantings/show" do
                                  planted_from: 'cutting')
   end
 
-  before(:each) do
+  before do
     assign(:planting, planting)
     assign(:photos, planting.photos.paginate(page: 1))
     controller.stub(:current_user) { member }
@@ -56,7 +56,7 @@ describe "plantings/show" do
   end
 
   context "no location set" do
-    before(:each) do
+    before do
       render
     end
 
@@ -78,7 +78,7 @@ describe "plantings/show" do
   end
 
   context "location set" do
-    before(:each) do
+    before do
       planting.owner.update(location: 'Greenwich, UK')
       render
     end

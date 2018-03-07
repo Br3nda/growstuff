@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "seeds/new" do
-  before(:each) do
+  before do
     @member = FactoryBot.create(:member)
     sign_in @member
     controller.stub(:current_user) { @member }
@@ -27,7 +27,7 @@ describe "seeds/new" do
   end
 
   context 'member has location' do
-    before(:each) do
+    before do
       @member = FactoryBot.create(:london_member)
       sign_in @member
       controller.stub(:current_user) { @member }

@@ -5,7 +5,7 @@ describe 'home/_crops.html.haml', type: "view" do
   let!(:photo) { FactoryBot.create(:photo, plantings: [crop.plantings.first]) }
   let(:planting) { crop.plantings.first }
 
-  before(:each) { render }
+  before { render }
   it 'shows crops section' do
     assert_select 'h2', text: 'Some of our crops'
     assert_select "a[href='#{crop_path(crop)}']"
