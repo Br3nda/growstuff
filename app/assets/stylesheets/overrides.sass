@@ -1,22 +1,17 @@
-@import "bootstrap-sprockets"
-@import "bootstrap"
-@import "custom_bootstrap/variables"
 // this padding needs to be done before the responsive stuff is imported
 body
   padding-top: $navbar-height
 
 // Font Awesome
-@import "font-awesome-sprockets"
-@import "font-awesome"
 
 .list-inline > li.first
-  padding-left: 0px
+  padding-left: 0
 
 h2
-  font-size: 150%
+  font-size: 150
 
 h3
-  font-size: 120%
+  font-size: 120
 
 .main
   padding-right: 1em
@@ -31,7 +26,7 @@ h3
   box-shadow: none
 
 .img-responsive
-  max-width: 100%
+  max-width: 100
   height: auto
 
 .sidebar
@@ -41,10 +36,10 @@ h3
 
 // this is used for eg. crops and members index pages
 .six-across:nth-child(6n+1)
-  margin-left: 0px
+  margin-left: 0
 
 .three-across:nth-child(3n+1)
-  margin-left: 0px
+  margin-left: 0
   clear: both
 
 // let's condense the hero unit a little
@@ -61,7 +56,7 @@ h3
   background-color: lighten($green, 40%)
   border: 1px solid lighten($green, 20%)
   border-radius: 6px
-  line-height: 200%
+  line-height: 200
   padding: 15px
   text-align: center
 
@@ -94,20 +89,6 @@ p.stats
     dd
       margin-left: auto
 
-@media (min-width: $screen-md-min)
-  .planting-thumbnail
-    dl.planting-attributes
-      width: 100%
-
-      dt
-        text-align: left
-        width: 120px
-      dd
-        padding-left: 120px
-        margin-left: auto
-
-  .navbar .navbar-form
-    width: 250px
 
 
 #placesmap, #cropmap
@@ -118,7 +99,7 @@ p.stats
 
 .location-not-set
   height: 250px
-  width: 100%
+  width: 100
   background-image: image-url('location-not-set.en.png')
   background-repeat: no-repeat
   background-position: center
@@ -137,7 +118,7 @@ p.stats
   position: relative
 
   img
-    width: 100%
+    width: 100
 
   .text
     display: none
@@ -145,7 +126,7 @@ p.stats
     position: absolute
     bottom: 0
     background: rgba(0, 0, 0, 0.8)
-    width: 100%
+    width: 100
     margin: 0
 
   p
@@ -173,7 +154,7 @@ p.stats
     height: 220px
     .cropinfo
       display: inline-block
-      max-width: 100%
+      max-width: 100
       white-space: nowrap
       line-height: 1em
       padding-bottom: 2px
@@ -201,11 +182,11 @@ li.crop-hierarchy
   list-style-type: disc
 
 .navbar-brand
-  margin: 0px
-  padding: 0px
+  margin: 0
+  padding: 0
 
 .navbar-bottom
-  margin: 40px 0px 0px 0px !important
+  margin: 40px 0 0 0 !important
 
 // footer
 footer
@@ -216,8 +197,8 @@ footer
     ul
       list-style-type: none
       list-style-position: outside
-      padding-left: 0px
-      margin-left: 0px
+      padding-left: 0
+      margin-left: 0
 
     a
       color: $navbar-default-link-color
@@ -235,14 +216,14 @@ footer
 // ensure footer is pushed to bottom of browser window
 
 #maincontainer
-  min-height: 80%
+  min-height: 80
 
 html, body
-  height: 100%
+  height: 100
 
 .crop-image, .member-image
-  width: 100%
-  height: 100%
+  width: 100
+  height: 100
 
 // Autosuggest
 
@@ -256,22 +237,6 @@ html, body
 
 // Overrides applying only to mobile view. This must be at the end of the overrides file.
 
-@media only screen and (max-width: 767px)
-  .sidebar
-    margin-left: 0
-    border-left: none
-    padding-left: 0
-
-  #map
-    height: 300px
-
-  .navbar .nav > li
-    display: block
-
-  .navbar .navbar-form
-    width: 185px
-    padding-left: 0
-    padding-right: 0
 
 /* override "info" alert boxes to be green, not blue, on Growstuff */
 $state-info-text: darken($green, 10%)
