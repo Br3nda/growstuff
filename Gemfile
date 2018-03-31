@@ -49,7 +49,6 @@ gem 'bootstrap-kaminari-views'     # bootstrap views for kaminari
 gem 'kaminari'                     # pagination
 
 gem 'active_utils'
-gem 'activemerchant'
 gem 'sidekiq'
 
 # Markdown formatting for updates etc
@@ -126,7 +125,6 @@ group :development do
 end
 
 group :development, :test do
-  gem "active_merchant-paypal-bogus-gateway"
   gem 'bullet'                          # performance tuning by finding unnecesary queries
   gem 'byebug'                          # debugging
   gem 'capybara'                        # integration tests
@@ -158,3 +156,5 @@ end
 group :travis do
   gem 'platform-api'
 end
+gem 'loofah', '>= 2.2.1'
+gem 'rack-protection', '>= 2.0.1'
