@@ -101,6 +101,14 @@ class Crop < ActiveRecord::Base
     Photo.joins(:harvests).where("harvests.crop_id": id)
   end
 
+  def planting_photos
+    Photo.joins(:plantings).where("plantings.crop_id": id)
+  end
+
+  def seed_photos
+    Photo.joins(:seeds).where("seeds.crop_id": id)
+  end
+
   # update the Elasticsearch index (only if we're using it in this
   # environment)
   def update_index(_name_obj)
