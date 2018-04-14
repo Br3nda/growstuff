@@ -46,7 +46,7 @@ describe Crop do
 
   context 'popularity' do
     let(:tomato) { FactoryBot.create(:tomato) }
-    let(:maize) { FactoryBot.create(:maize) }
+    let(:maize)    { FactoryBot.create(:maize) }
     let(:cucumber) { FactoryBot.create(:crop, name: 'cucumber') }
 
     before do
@@ -333,8 +333,8 @@ describe Crop do
 
   context "harvests" do
     let(:h1) { FactoryBot.create(:harvest, crop: maize, plant_part: pp1) }
-    let(:h2) { FactoryBot.create(:harvest, crop: maize, plant_part: pp2) }
-    let!(:crop) { FactoryBot.create(:crop) }
+    let(:h2)       { FactoryBot.create(:harvest, crop: maize, plant_part: pp2) }
+    let!(:crop)    { FactoryBot.create(:crop) }
     let!(:harvest) { FactoryBot.create(:harvest, crop: crop) }
 
     it "has harvests" do
@@ -539,8 +539,8 @@ describe Crop do
 
   context "crop-post association" do
     let!(:tomato) { FactoryBot.create(:tomato) }
-    let!(:maize) { FactoryBot.create(:maize) }
-    let!(:post) { FactoryBot.create(:post, body: "[maize](crop)[tomato](crop)[tomato](crop)") }
+    let!(:maize)  { FactoryBot.create(:maize) }
+    let!(:post)   { FactoryBot.create(:post, body: "[maize](crop)[tomato](crop)[tomato](crop)") }
 
     describe "destroying a crop" do
       before do

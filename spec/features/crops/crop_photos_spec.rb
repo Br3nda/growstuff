@@ -6,7 +6,7 @@ feature "crop detail page", js: true do
 
   let(:crop) { create :crop, plantings: [planting], harvests: [harvest] }
   let(:planting) { create :planting, owner: member }
-  let(:harvest) { create :harvest, owner: member }
+  let(:harvest)  { create :harvest, owner: member }
 
   let(:photo1) do
     create(:photo, owner: member, title: 'photo 1', fullsize_url: 'photo1.jpg', thumbnail_url: 'thumb1.jpg')

@@ -4,13 +4,13 @@ describe PhotosHelper do
   let(:crop) { FactoryBot.create :crop }
 
   let(:garden) { FactoryBot.create :garden }
-  let(:garden_photo) { FactoryBot.create(:photo, thumbnail_url: 'garden.jpg') }
-  let(:planting) { FactoryBot.create :planting, crop: crop }
+  let(:garden_photo)   { FactoryBot.create(:photo, thumbnail_url: 'garden.jpg') }
+  let(:planting)       { FactoryBot.create :planting, crop: crop }
   let(:planting_photo) { FactoryBot.create(:photo, thumbnail_url: 'planting.jpg') }
-  let(:harvest) { FactoryBot.create :harvest, crop: crop }
-  let(:harvest_photo) { FactoryBot.create(:photo, thumbnail_url: 'harvest.jpg') }
-  let(:seed) { FactoryBot.create :seed, crop: crop }
-  let(:seed_photo) { FactoryBot.create(:photo, thumbnail_url: 'seed.jpg') }
+  let(:harvest)        { FactoryBot.create :harvest, crop: crop }
+  let(:harvest_photo)  { FactoryBot.create(:photo, thumbnail_url: 'harvest.jpg') }
+  let(:seed)           { FactoryBot.create :seed, crop: crop }
+  let(:seed_photo)     { FactoryBot.create(:photo, thumbnail_url: 'seed.jpg') }
 
   describe "crops" do
     subject { crop_image_path(crop) }
