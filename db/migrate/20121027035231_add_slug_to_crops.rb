@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSlugToCrops < ActiveRecord::Migration
   def change
     add_column :crops, :slug, :string

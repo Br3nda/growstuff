@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DefaultReadToFalse < ActiveRecord::Migration
   def up
     change_table :notifications do |t|

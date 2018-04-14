@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RequireAccountTypeName < ActiveRecord::Migration
   def up
     change_column :account_types, :name, :string, null: false

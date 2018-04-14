@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddFieldsToGardens < ActiveRecord::Migration
   def change
     add_column :gardens, :active, :boolean, default: true

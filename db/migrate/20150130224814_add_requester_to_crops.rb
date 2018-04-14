@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddRequesterToCrops < ActiveRecord::Migration
   def change
     add_column :crops, :requester_id, :integer

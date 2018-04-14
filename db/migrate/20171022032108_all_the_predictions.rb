@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AllThePredictions < ActiveRecord::Migration
   def change
     add_column :crops, :perennial, :boolean, default: false

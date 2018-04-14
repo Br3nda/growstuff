@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCompletedToOrder < ActiveRecord::Migration
   def change
     add_column :orders, :completed_at, :datetime

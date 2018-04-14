@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddNameToAuthentications < ActiveRecord::Migration
   def change
     add_column :authentications, :name, :string

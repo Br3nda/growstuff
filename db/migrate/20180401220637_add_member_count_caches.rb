@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMemberCountCaches < ActiveRecord::Migration
   def change
     add_column :members, :photos_count, :integer

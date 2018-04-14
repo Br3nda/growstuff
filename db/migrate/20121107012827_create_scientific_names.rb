@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateScientificNames < ActiveRecord::Migration
   def change
     create_table :scientific_names do |t|

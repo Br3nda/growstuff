@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSlugToForums < ActiveRecord::Migration
   def change
     add_column :forums, :slug, :string

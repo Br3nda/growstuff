@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RequireSystemNameForCrops < ActiveRecord::Migration
   def up
     change_table :crops do |t|

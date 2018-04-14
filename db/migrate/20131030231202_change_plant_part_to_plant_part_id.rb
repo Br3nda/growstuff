@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangePlantPartToPlantPartId < ActiveRecord::Migration
   def up
     remove_column :harvests, :plant_part

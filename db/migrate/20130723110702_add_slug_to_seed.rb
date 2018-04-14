@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSlugToSeed < ActiveRecord::Migration
   def change
     add_column :seeds, :slug, :string

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveShop < ActiveRecord::Migration
   def up
     drop_table :order_items

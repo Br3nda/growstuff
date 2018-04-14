@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RequireFieldsForComments < ActiveRecord::Migration
   def up
     change_table :comments do |t|

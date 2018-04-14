@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DefaultPlantingsCountToZero < ActiveRecord::Migration
   def up
     change_column :crops, :plantings_count, :integer, default: 0

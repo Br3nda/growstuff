@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeOrderMemberIdToInteger < ActiveRecord::Migration
   def up
     remove_column :orders, :member_id

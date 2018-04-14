@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenameScientificName < ActiveRecord::Migration
   def self.up
     rename_column :scientific_names, :scientific_name, :name

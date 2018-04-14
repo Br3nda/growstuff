@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePlantParts < ActiveRecord::Migration
   def change
     create_table :plant_parts do |t|

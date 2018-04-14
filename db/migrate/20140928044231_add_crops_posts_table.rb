@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCropsPostsTable < ActiveRecord::Migration
   def change
     create_table :crops_posts, id: false do |t|

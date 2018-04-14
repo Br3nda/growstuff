@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SeedUsage < ActiveRecord::Migration
   def change
     # # seed can be all sown, meaning there is none left

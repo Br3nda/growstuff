@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def price_in_dollars(price)
     format('%.2f', price / 100.0)

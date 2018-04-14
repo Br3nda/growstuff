@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeFlickrPhotoIdToString < ActiveRecord::Migration
   def up
     remove_column :photos, :flickr_photo_id

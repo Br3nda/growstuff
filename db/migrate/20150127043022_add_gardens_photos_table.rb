@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddGardensPhotosTable < ActiveRecord::Migration
   def change
     create_table :gardens_photos, id: false do |t|

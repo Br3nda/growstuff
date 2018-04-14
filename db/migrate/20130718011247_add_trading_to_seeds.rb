@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTradingToSeeds < ActiveRecord::Migration
   def change
     add_column :seeds, :tradable, :boolean

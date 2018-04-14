@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddGeoToMembers < ActiveRecord::Migration
   def change
     add_column :members, :location, :string

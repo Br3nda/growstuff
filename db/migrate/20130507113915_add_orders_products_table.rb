@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddOrdersProductsTable < ActiveRecord::Migration
   def change
     create_table :orders_products, id: false do |t|

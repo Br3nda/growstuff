@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddWeightToHarvests < ActiveRecord::Migration
   def change
     add_column :harvests, :weight_quantity, :decimal
