@@ -23,12 +23,12 @@ describe PhotosController do
   end
 
   describe "GET new" do
-    let(:tomato) { FactoryBot.create(:tomato) }
+    let(:tomato) { FactoryBot.create(:tomato)                                  }
     let(:planting) { FactoryBot.create(:planting, crop: tomato, owner: member) }
-    let(:garden) { FactoryBot.create(:garden, owner: member) }
-    let(:harvest) { FactoryBot.create(:harvest, owner: member) }
-    let(:member) { FactoryBot.create(:member) }
-    let!(:auth) { FactoryBot.create(:flickr_authentication, member: member) }
+    let(:garden) { FactoryBot.create(:garden, owner: member)                   }
+    let(:harvest) { FactoryBot.create(:harvest, owner: member)                 }
+    let(:member) { FactoryBot.create(:member)                                  }
+    let!(:auth) { FactoryBot.create(:flickr_authentication, member: member)    }
 
     before(:each) do
       sign_in member
@@ -69,10 +69,10 @@ describe PhotosController do
     end
 
     let(:member) { FactoryBot.create(:member) }
-    let(:garden) { FactoryBot.create(:garden, owner: member) }
+    let(:garden) { FactoryBot.create(:garden, owner: member)                     }
     let(:planting) { FactoryBot.create(:planting, garden: garden, owner: member) }
-    let(:harvest) { FactoryBot.create(:harvest, owner: member) }
-    let(:photo) { FactoryBot.create(:photo, owner: member) }
+    let(:harvest) { FactoryBot.create(:harvest, owner: member)                   }
+    let(:photo) { FactoryBot.create(:photo, owner: member)                       }
 
     describe "with valid params" do
       before { controller.stub(:current_member) { member } }

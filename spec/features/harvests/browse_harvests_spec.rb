@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "browse harvests" do
-  let!(:member) { create :member }
+  let!(:member) { create :member                  }
   let!(:harvest) { create :harvest, owner: member }
 
   background { login_as member }

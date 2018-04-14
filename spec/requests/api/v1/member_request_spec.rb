@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Members', type: :request do
   subject { JSON.parse response.body }
   let(:headers) { { 'Accept' => 'application/vnd.api+json' } }
-  let!(:member) { FactoryBot.create :member }
+  let!(:member) { FactoryBot.create :member                  }
   let(:member_encoded_as_json_api) do
     { "id" => member.id.to_s,
       "type" => "members",

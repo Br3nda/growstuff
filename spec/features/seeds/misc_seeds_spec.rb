@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "seeds", js: true do
   context "signed in user" do
     let(:member) { create :member }
-    let(:crop) { create :crop }
+    let(:crop) { create :crop     }
 
     background { login_as member }
 

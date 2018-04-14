@@ -159,7 +159,7 @@ describe Seed do
   end
 
   context 'ancestry' do
-    let(:parent_planting) { FactoryBot.create :planting }
+    let(:parent_planting) { FactoryBot.create :planting                    }
     let(:seed) { FactoryBot.create :seed, parent_planting: parent_planting }
     it "seed has a parent planting" do
       expect(seed.parent_planting).to eq(parent_planting)
@@ -177,7 +177,7 @@ describe Seed do
     end
 
     describe 'scopes' do
-      let!(:seed) { FactoryBot.create(:seed) }
+      let!(:seed) { FactoryBot.create(:seed)                   }
       let!(:finished_seed) { FactoryBot.create(:finished_seed) }
 
       describe 'has finished scope' do
