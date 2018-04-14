@@ -4,6 +4,10 @@ class MembersController < ApplicationController
   respond_to :html, :json, :rss
   after_action :expire_homepage, only: :create
 
+  EMAIL_TYPE_STRING = {
+    send_notification_email: "direct message notifications",
+    send_planting_reminder: "planting reminders"
+  }.freeze
   def index
     @sort = params[:sort]
     @members = members
@@ -48,10 +52,6 @@ class MembersController < ApplicationController
     @followers = @member.followers.paginate(page: params[:page])
   end
 
-  EMAIL_TYPE_STRING = {
-    send_notification_email: "direct message notifications",
-    send_planting_reminder: "planting reminders"
-  }.freeze
 
   def unsubscribe
     verifier = ActiveSupport::MessageVerifier.new(ENV['RAILS_SECRET_TOKEN'])
