@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
   add_index "authentications", ["member_id"], name: "index_authentications_on_member_id", using: :btree
 
   create_table "comfy_cms_blocks", force: :cascade do |t|
-    t.string   "identifier",     null: false
+    t.string   "identifier", null: false
     t.text     "content"
     t.integer  "blockable_id"
     t.string   "blockable_type"
@@ -66,14 +66,14 @@ ActiveRecord::Schema.define(version: 20180401220637) do
   add_index "comfy_cms_categorizations", ["category_id", "categorized_type", "categorized_id"], name: "index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id", unique: true, using: :btree
 
   create_table "comfy_cms_files", force: :cascade do |t|
-    t.integer  "site_id",                                    null: false
+    t.integer  "site_id", null: false
     t.integer  "block_id"
     t.string   "label",                                      null: false
     t.string   "file_file_name",                             null: false
     t.string   "file_content_type",                          null: false
     t.integer  "file_file_size",                             null: false
-    t.string   "description",       limit: 2048
-    t.integer  "position",                       default: 0, null: false
+    t.string   "description", limit: 2048
+    t.integer  "position", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
   add_index "comfy_cms_files", ["site_id", "position"], name: "index_comfy_cms_files_on_site_id_and_position", using: :btree
 
   create_table "comfy_cms_layouts", force: :cascade do |t|
-    t.integer  "site_id",                    null: false
+    t.integer  "site_id", null: false
     t.integer  "parent_id"
     t.string   "app_layout"
     t.string   "label",                      null: false
@@ -102,13 +102,13 @@ ActiveRecord::Schema.define(version: 20180401220637) do
   add_index "comfy_cms_layouts", ["site_id", "identifier"], name: "index_comfy_cms_layouts_on_site_id_and_identifier", unique: true, using: :btree
 
   create_table "comfy_cms_pages", force: :cascade do |t|
-    t.integer  "site_id",                        null: false
+    t.integer  "site_id", null: false
     t.integer  "layout_id"
     t.integer  "parent_id"
     t.integer  "target_page_id"
-    t.string   "label",                          null: false
+    t.string   "label", null: false
     t.string   "slug"
-    t.string   "full_path",                      null: false
+    t.string   "full_path", null: false
     t.text     "content_cache"
     t.integer  "position",       default: 0,     null: false
     t.integer  "children_count", default: 0,     null: false
@@ -165,20 +165,20 @@ ActiveRecord::Schema.define(version: 20180401220637) do
   end
 
   create_table "crops", force: :cascade do |t|
-    t.string   "name",                                              null: false
+    t.string   "name", null: false
     t.string   "en_wikipedia_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "parent_id"
-    t.integer  "plantings_count",              default: 0
+    t.integer  "plantings_count", default: 0
     t.integer  "creator_id"
     t.integer  "requester_id"
-    t.string   "approval_status",              default: "approved"
+    t.string   "approval_status", default: "approved"
     t.text     "reason_for_rejection"
     t.text     "request_notes"
     t.text     "rejection_notes"
-    t.boolean  "perennial",                    default: false
+    t.boolean  "perennial", default: false
     t.integer  "median_lifespan"
     t.integer  "median_days_to_first_harvest"
     t.integer  "median_days_to_last_harvest"
@@ -217,11 +217,11 @@ ActiveRecord::Schema.define(version: 20180401220637) do
   create_table "gardens", force: :cascade do |t|
     t.string   "name",                       null: false
     t.integer  "owner_id"
-    t.string   "slug",                       null: false
+    t.string   "slug", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.boolean  "active",      default: true
+    t.boolean  "active", default: true
     t.string   "location"
     t.float    "latitude"
     t.float    "longitude"
@@ -269,7 +269,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
     t.integer  "member_id"
     t.integer  "likeable_id"
     t.string   "likeable_type"
-    t.string   "categories",    array: true
+    t.string   "categories", array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -287,7 +287,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0
+    t.integer  "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -296,7 +296,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",         default: 0
+    t.integer  "failed_attempts", default: 0
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
     t.text     "bio"
     t.integer  "plantings_count"
     t.boolean  "newsletter"
-    t.boolean  "send_planting_reminder",  default: true
+    t.boolean  "send_planting_reminder", default: true
     t.string   "preferred_avatar_uri"
     t.integer  "gardens_count"
     t.integer  "harvests_count"
@@ -336,10 +336,10 @@ ActiveRecord::Schema.define(version: 20180401220637) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "sender_id"
-    t.integer  "recipient_id",                 null: false
+    t.integer  "recipient_id", null: false
     t.string   "subject"
     t.text     "body"
-    t.boolean  "read",         default: false
+    t.boolean  "read", default: false
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -370,7 +370,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
     t.string   "title",           null: false
     t.string   "license_name",    null: false
     t.string   "license_url"
-    t.string   "link_url",        null: false
+    t.string   "link_url", null: false
     t.string   "flickr_photo_id"
     t.datetime "date_taken"
   end
@@ -406,7 +406,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
     t.string   "sunniness"
     t.string   "planted_from"
     t.integer  "owner_id"
-    t.boolean  "finished",              default: false
+    t.boolean  "finished", default: false
     t.date     "finished_at"
     t.integer  "lifespan"
     t.integer  "days_to_first_harvest"
@@ -430,7 +430,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name", null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -455,7 +455,7 @@ ActiveRecord::Schema.define(version: 20180401220637) do
     t.date     "plant_before"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "tradable_to",             default: "nowhere"
+    t.string   "tradable_to", default: "nowhere"
     t.string   "slug"
     t.integer  "days_until_maturity_min"
     t.integer  "days_until_maturity_max"
