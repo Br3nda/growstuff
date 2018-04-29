@@ -1,0 +1,10 @@
+- if member_signed_in? && current_member.plantings.size == 0
+  %div{ class: build_alert_classes('info'), role: "alert" }
+    You have no plantings! Growstuff can track your
+    garden's plantings and predict harvest.
+    = link_to new_planting_path class: 'btn btn-default btn-xs' do
+      %span.glyphicon.glyphicon-grain{ title: "Plant" }
+      Plant something
+    %button.close{ type: "button", "data-dismiss" => "alert" }
+      %span{ "aria-hidden" => true } &times;
+      %span.sr-only Close

@@ -1,6 +1,8 @@
 // Finish times
 - if planting.finish_is_predicatable?
-  - if planting.super_late?
+  - if planting.finished?
+    / do nothing
+  - elsif planting.super_late?
     %span.badge.badge-super-late= t('.super_late')
     = render 'shared/buttons/finish_planting', planting: planting
   - elsif planting.late?
@@ -11,7 +13,7 @@
       = t('.days_until_finished')
 
 // Harvest times
-- unless planting.super_late?
+- unless planting.finished? || planting.super_late?
   - if planting.harvest_time?
     %span.badge.badge-harvest= t('.harvesting_now')
   - elsif planting.before_harvest_time?

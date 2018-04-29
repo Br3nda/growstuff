@@ -1,3 +1,4 @@
+Planted by #{planting.owner.login_name}
 - if planting.quantity.present?
   %p
     %small
@@ -9,3 +10,8 @@
     %small
       Planted:
       = planting.planted_at.to_s
+
+= render 'plantings/badges', planting: planting
+
+- if planting.finished?
+  %p Finished

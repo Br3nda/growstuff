@@ -86,11 +86,11 @@ en:
       forums: Forums
       view_all: View all posts
     index:
-      add_seeds: Add seeds
+      add_seeds: Save seeds
       edit_profile: Edit profile
-      harvest: Harvest
-      plant: Plant
-      post: Post
+      harvest: Harvest crops
+      plant: Plant crops
+      post: Blog about crops
       welcome: Welcome to %{site_name}, %{member_name}
     members:
       title: Some of our members
