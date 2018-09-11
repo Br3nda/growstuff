@@ -27,7 +27,9 @@ Please set it using
   end
 end
 
-unless system('grep', '-i', author, 'CONTRIBUTORS.md')
+author_search = author.replace('[', '\[').replace(']', '\]')
+
+unless system('grep', '-i', author_search, 'CONTRIBUTORS.md')
   abort %(
 Thanks for your contribution, #{author}!
 Please add your name and GitHub handle to the file CONTRIBUTORS.md,

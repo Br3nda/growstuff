@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :member, aliases: %i(author owner sender recipient creator) do
-    login_name { generate(:login_name) }
+    login_name { Faker::Internet.unique.username }
     password { 'password1' }
     email { Faker::Internet.unique.email }
     tos_agreement { true }
