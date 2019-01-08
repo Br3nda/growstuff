@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/br3nda/ruby-seasons.git
+  revision: 401e57000629f7fbae68bc20a39dada710861668
+  specs:
+    ruby-seasons (0.1.2)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -453,6 +459,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.2)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    simple_calendar (2.3.0)
+      rails (>= 3.0)
     simplecov (0.12.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -579,10 +587,12 @@ DEPENDENCIES
   rspec-rails
   rubocop (~> 0.60)
   rubocop-rspec
+  ruby-seasons!
   ruby-units
   sass-rails
   selenium-webdriver
   sidekiq
+  simple_calendar (~> 2.0)
   sparkpost_rails
   timecop
   uglifier

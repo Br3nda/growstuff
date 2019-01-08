@@ -63,8 +63,12 @@ class Planting < ApplicationRecord
     in: PLANTED_FROM_VALUES, message: "%<value>s is not a valid planting method"
   }
 
-  def age_in_days
-    (Time.zone.today - planted_at).to_i if planted_at.present?
+  def hemisphere
+    (owner.latitude > 0) ? :north : :south
+  end
+
+  def age_in_days(at_day=Time.zone.today)
+    (at_day - planted_at).to_i if planted_at.present?
   end
 
   def planting_slug
@@ -85,20 +89,24 @@ class Planting < ApplicationRecord
     I18n.t('plantings.string', crop: crop.name, garden: garden.name, owner: owner)
   end
 
+  def photo(before_date=Time.zone.today)
+    photos.where('date_taken <= ?', before_date).order(date_taken: :desc).first
+  end
+
   def default_photo
-    photos.order(created_at: :desc).first
+    photo
   end
 
-  def finished?
-    finished || (finished_at.present? && finished_at <= Time.zone.today)
+  def finished?(at_date=Time.zone.today)
+    (finished_at.present? && finished_at <= at_date)
   end
 
-  def planted?
-    planted_at.present? && planted_at <= Time.zone.today
+  def planted?(at_date=Time.zone.today)
+    planted_at.present? && planted_at <= at_date
   end
 
-  def growing?
-    planted? && !finished?
+  def growing?(at_date=Time.zone.today)
+    planted?(at_date) && !finished?(at_date) && !finished_predicted?(at_date)
   end
 
   private

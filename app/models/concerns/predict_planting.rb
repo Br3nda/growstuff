@@ -20,6 +20,14 @@ module PredictPlanting
       end
     end
 
+    def finished_predicted?(at_date=Time.zone.today)
+      at_date >= finish_predicted_at if finish_predicted_at.present?
+    end
+
+    def days_until_finish_predicted(at_date)
+      (at_date - finish_predicted_at).to_i * -1
+    end
+
     # days
     def expected_lifespan
       if actual_lifespan.present?

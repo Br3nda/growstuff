@@ -7,3 +7,8 @@
      number_gardens: link_to(t('.number_gardens_linktext', count: Garden.count.to_i), gardens_path))
 
 
+- current_member.plantings.each do |planting|
+  - if planting.harvesting?
+    = planting.crop.name
+  - else
+    nah

@@ -78,6 +78,10 @@ Rails.application.routes.draw do
   resources :comments
   resources :roles
   resources :forums
+  
+  scope :calendar do
+    get '/' => 'calendar#index'
+  end
 
   resources :follows, only: %i(create destroy)
   resources :likes, only: %i(create destroy)

@@ -1,0 +1,17 @@
+= month_calendar number_of_weeks: 5 do |date|
+  %h2 #{date.day} #{I18n.t("date.month_names")[date.month]}
+  %h3= date.season(@hemisphere)
+
+  -# - (0..3).each do |n|
+  -#   - displayed_date = date - n.years
+
+  -#   %h4= displayed_date.year
+  
+  -#   = render 'calendar/growing', plantings: @plantings, date: displayed_date
+  -#   = render 'calendar/harvests', harvests: @harvests, date: displayed_date
+
+  %h4= date.year
+
+  = render 'calendar/growing', plantings: @plantings, date: date
+  = render 'calendar/harvests', harvests: @harvests, date: date
+

@@ -1,0 +1,6 @@
+- harvests.each do |harvest|
+  - if harvest.harvested_at == date
+    %h1= icon('fas', 'apple-alt')
+    = link_to harvest do
+      harvested
+      = harvest.crop.name

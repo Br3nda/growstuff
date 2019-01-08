@@ -1,0 +1,35 @@
+- plantings.each do |planting|
+
+  -# recorded events
+  - if planting.planted_at == date
+    %h1= icon('fas', 'seedling')
+    = link_to planting do
+      planted
+      = planting
+
+  -# Show the future
+  - if date > Time.zone.now
+    - if planting.first_harvest_date == date
+      %h1= icon('fas', 'apple-alt')
+      harvest begins for
+      = link_to planting do
+        = planting.to_s
+
+    - if planting.last_harvest_date == date
+      %h1= icon('fas', 'apple-alt')
+      harvest ends for
+      = link_to planting do
+        = planting.crop.name
+
+    - if planting.finish_predicted_at == date
+      %h1= icon('fas', 'skull-crossbones')
+      = link_to planting do
+        = planting.crop.name
+        predicted to finish
+
+
+
+-# - plantings.each do |planting|
+-#   - if planting.growing?(date)
+-#     = link_to planting do
+-#       = image_tag planting_image_path(planting, date), alt: planting.crop.name, width: 50, alt: planting.crop.name

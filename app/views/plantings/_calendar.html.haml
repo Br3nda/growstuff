@@ -1,0 +1,44 @@
+%h2 Calendar 
+
+= month_calendar do |date|
+  %h2 #{date.day} #{I18n.t("date.month_names")[date.month]} #{date.year}
+  %h3= date.season(@planting.hemisphere)
+
+
+  - if planting.growing?(date)
+    .thumbnail
+      .photo-thumbnail
+        = image_tag planting_image_path(planting, date), alt: planting.crop.name, alt: planting.crop.name
+      growing for #{planting.age_in_days(date)} days
+
+  - if planting.planted_at == date
+    %h1= icon('fas', 'seedling')
+    %h2 planted today
+
+  - if planting.first_harvest_date == date
+    %h1= icon('fas', 'apple-alt')
+    harvest begins
+
+  - if planting.last_harvest_date == date
+    %h1= icon('fas', 'apple-alt')
+    harvest ends
+
+  - if planting.finish_predicted_at == date
+    %h1= icon('fas', 'skull-crossbones')
+    predicted to finish
+
+  - if planting.harvesting?(date) && !planting.finished_predicted?(date)
+    harvesting
+
+  - if planting.finished?(date)
+    finished
+  - elsif planting.finished_predicted?(date)
+    finished
+    = planting.days_until_finish_predicted(date) * -1
+    days ago
+
+  - if planting.before_harvesting?(date)
+    = planting.days_until_first_harvest_predicted(date)
+    days until harvest
+
+

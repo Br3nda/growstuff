@@ -12,9 +12,9 @@
 
 // Harvest times
 - unless planting.super_late?
-  - if planting.harvest_time?
+  - if planting.harvesting?
     %span.badge.badge-harvest= t('.harvesting_now')
-  - elsif planting.before_harvest_time?
+  - elsif planting.before_harvesting?
     %span.badge
       = days_from_now_to_first_harvest(planting)
       = t('.days_until_harvest')

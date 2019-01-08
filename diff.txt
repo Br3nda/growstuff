@@ -1,0 +1,340 @@
+commit ea2653ecfc1910ec68462d5c0ccbeea488d46aad
+Merge: a1e317e5 99ac99b3
+Author: Daniel O'Connor <daniel.oconnor@gmail.com>
+Date:   Sun Jan 6 15:41:51 2019 +1030
+
+    Merge pull request #1779 from Br3nda/ignore-extra-files
+    
+    Switch to yarn && Ignore extra files
+
+commit 99ac99b399b2f0ffbb49e20ba8b94a3d79dd43e7
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sun Jan 6 16:19:58 2019 +1300
+
+    Can't update pip on travis, so don't
+
+commit 97b377cf8343eb1ae5507c5e3a77190e83dab860
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sun Jan 6 16:17:34 2019 +1300
+
+    Add --no-document to install of linters
+    
+    as suggested in https://github.com/brigade/overcommit/issues/610
+
+commit 7c354c98725295711de2ff33b12d3b4e4cf0ab09
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sun Jan 6 09:53:25 2019 +1300
+
+    Re-enable linters on Travis
+
+commit 88ccdadeb1087737739cad92736cb0970d4c460b
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sun Jan 6 08:58:06 2019 +1300
+
+    Tidy up .gitignore
+
+commit 798b4a8b47de50ea1752b18a150472b4eadf35e2
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sun Jan 6 08:57:57 2019 +1300
+
+    Switching to yarn
+
+commit a1e317e5093d51ef0a6b54ece5c1cbe2432fdf42
+Merge: 0f1ce681 de8eba73
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sun Jan 6 08:39:58 2019 +1300
+
+    Merge pull request #1778 from Br3nda/fix/schema
+    
+    Fix modified schema deploy error
+
+commit de8eba738e813cf6c20b8b02ab8a8cfd5128202f
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sat Jan 5 19:44:40 2019 +1300
+
+    Fix modified schema deploy error
+
+commit 0f1ce681d282ea6c784ccc7830fe1d2a7c8f7446
+Merge: fddfdf01 cecc032d
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sat Jan 5 19:32:55 2019 +1300
+
+    Merge pull request #1773 from Growstuff/dependabot/bundler/chartkick-3.0.2
+    
+    Bump chartkick from 3.0.1 to 3.0.2
+
+commit cecc032dee5eaa3d03e11b8ad14877aa12e86363
+Author: dependabot[bot] <support@dependabot.com>
+Date:   Fri Jan 4 10:12:16 2019 +0000
+
+    Bump chartkick from 3.0.1 to 3.0.2
+    
+    Bumps [chartkick](https://github.com/ankane/chartkick) from 3.0.1 to 3.0.2.
+    - [Release notes](https://github.com/ankane/chartkick/releases)
+    - [Changelog](https://github.com/ankane/chartkick/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/ankane/chartkick/compare/v3.0.1...v3.0.2)
+    
+    Signed-off-by: dependabot[bot] <support@dependabot.com>
+
+commit fddfdf01079e6abb52fbb22a4ccf797bde22f6c6
+Merge: 8e3db87f cd435581
+Author: dependabot[bot] <dependabot[bot]@users.noreply.github.com>
+Date:   Fri Jan 4 10:09:23 2019 +0000
+
+    Merge pull request #1774 from Growstuff/dependabot/bundler/jsonapi-resources-0.9.4
+
+commit cd43558120f51dc5949bddc28339e8002eb2ebbb
+Author: dependabot[bot] <support@dependabot.com>
+Date:   Fri Jan 4 09:24:41 2019 +0000
+
+    Bump jsonapi-resources from 0.9.3 to 0.9.4
+    
+    Bumps [jsonapi-resources](https://github.com/cerebris/jsonapi-resources) from 0.9.3 to 0.9.4.
+    - [Release notes](https://github.com/cerebris/jsonapi-resources/releases)
+    - [Commits](https://github.com/cerebris/jsonapi-resources/compare/v0.9.3...v0.9.4)
+    
+    Signed-off-by: dependabot[bot] <support@dependabot.com>
+
+commit 8e3db87f4e2573fd014cbd4fe3d5ebf7b6980dfb
+Merge: e9ead68e efc8fb85
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Fri Jan 4 22:22:32 2019 +1300
+
+    Merge pull request #1766 from Br3nda/upgrade/rails-5-2
+    
+    Upgrade to Rails 5.2
+
+commit efc8fb85cb2f1179e35cb5455834124f181ec98c
+Merge: 4374a480 e9ead68e
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Fri Jan 4 20:41:52 2019 +1300
+
+    Merge branch 'dev' into upgrade/rails-5-2
+
+commit e9ead68e9458635101dcdb01d0bec8dc7ddd2af2
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Fri Jan 4 18:17:27 2019 +1300
+
+    Revert "Auto corrected by following Format Javascript Code"
+    
+    This reverts commit 334b33c555e4d53f60c7c4c2be8ec1fa11209f6d.
+
+commit 334b33c555e4d53f60c7c4c2be8ec1fa11209f6d
+Author: Awesome Code <team@xinminlabs.com>
+Date:   Fri Jan 4 05:15:13 2019 +0000
+
+    Auto corrected by following Format Javascript Code
+
+commit 4218688d8e1c197690a2b629cb68d71d1399d8c0
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Fri Jan 4 18:14:36 2019 +1300
+
+    Revert "Auto corrected by following Format Javascript Code"
+    
+    This reverts commit f83a2b639730d985dc8fb38dd0caa6646404bee7.
+
+commit f83a2b639730d985dc8fb38dd0caa6646404bee7
+Author: Awesome Code <team@xinminlabs.com>
+Date:   Thu Jan 3 10:00:13 2019 +0000
+
+    Auto corrected by following Format Javascript Code
+
+commit eae3755af7160e72dc6e8bbc6bd7a78b4e6ead34
+Merge: 301023b7 273da444
+Author: dependabot[bot] <dependabot[bot]@users.noreply.github.com>
+Date:   Thu Jan 3 09:59:47 2019 +0000
+
+    Merge pull request #1770 from Growstuff/dependabot/bundler/rubocop-rspec-1.31.0
+
+commit 273da44406d3458c5b753b386049a04a30f3fc7c
+Author: dependabot[bot] <support@dependabot.com>
+Date:   Thu Jan 3 07:31:04 2019 +0000
+
+    Bump rubocop-rspec from 1.30.1 to 1.31.0
+    
+    Bumps [rubocop-rspec](https://github.com/rubocop-hq/rubocop-rspec) from 1.30.1 to 1.31.0.
+    - [Release notes](https://github.com/rubocop-hq/rubocop-rspec/releases)
+    - [Changelog](https://github.com/rubocop-hq/rubocop-rspec/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/rubocop-hq/rubocop-rspec/compare/v1.30.1...v1.31.0)
+    
+    Signed-off-by: dependabot[bot] <support@dependabot.com>
+
+commit 4374a4800be24bedc780768a579adcfaa5dcac01
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 14:44:35 2019 +1300
+
+    Commenting out linter checks until overcommit is fixed
+
+commit 12472d3762336bfc61bf1908d53a1bccce7300d2
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 14:41:11 2019 +1300
+
+    Return to previous version
+
+commit 7d7ae1f0446e06f473da035d47b2653f8b8e953a
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 14:19:45 2019 +1300
+
+    Pin to older childprocess
+
+commit 84201c4f55653b2d586b16771c65cb303fc75866
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 14:12:27 2019 +1300
+
+    Pin to ruby 2.5.3 on linting
+
+commit 8229c7196cdae81980e06ae1f5fceef36b1181ab
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 13:50:30 2019 +1300
+
+    Don't install rubocop in linters. Use the one in the bundle
+
+commit 3de23957a3b769bc84623556cc879e0d17b9fec2
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 13:50:01 2019 +1300
+
+    Updated package-lock for linters
+
+commit 0971f3b5f4f6176c27eb84d26cccd04530bfa70d
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 12:50:19 2019 +1300
+
+    Updated notification specs for Rails 5.2
+
+commit d89c8f0fbc72385dadf5af17c3db435244184b9b
+Merge: f4df42d1 301023b7
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 12:31:37 2019 +1300
+
+    Merge branch 'dev' into upgrade/rails-5-2
+
+commit 301023b71329e67eac55d2e94dede7e23818b291
+Merge: 26198d90 fd2717ee
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 12:31:07 2019 +1300
+
+    Merge pull request #1768 from Br3nda/upgrade-heroku-stack
+    
+    Upgrade heroku stack
+
+commit fd2717ee01879ccb7b977fe02310e67667206d24
+Merge: 1627c347 26198d90
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Jan 3 08:51:06 2019 +1300
+
+    Merge branch 'dev' into upgrade-heroku-stack
+
+commit 26198d90e47de7479ba9b6f8685901d7712985fc
+Merge: f9aa6012 28dcc573
+Author: Cesy <cesy.avon@gmail.com>
+Date:   Wed Jan 2 09:07:15 2019 +0000
+
+    Merge pull request #1767 from Br3nda/fix-mailer-from
+    
+    Fix mailer from address
+
+commit 28dcc573076b767669620a3bb8cf10caa824b137
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 14:10:04 2019 +1300
+
+    Set email env on travis runs
+
+commit 1627c347e4efa5c601c60ef1c971134782647e2f
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 14:07:51 2019 +1300
+
+    App.json to configure heroku
+
+commit 6df2d9272013c611ef752608da5c3846476bdce0
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 13:59:32 2019 +1300
+
+    Adding from email to example application.yml
+
+commit a76f5d3a22d2ee47704ec7f245beb6af38aacf89
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 13:56:08 2019 +1300
+
+    More locations with production email addresses
+
+commit f4df42d136f2e5650608baed7aa0378fd75ab247
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 13:42:53 2019 +1300
+
+    Fixes not being able to find the 404 page file
+
+commit c7ad7bcc706d45fb74d39d9c7f3e33e4740bb9ea
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 13:38:37 2019 +1300
+
+    Fixed redundant begin block
+
+commit 47a4b02ce4bc8c6547c53a6ef06e31f6c03d2dd4
+Merge: 73e9a941 f9aa6012
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 13:36:41 2019 +1300
+
+    Merge remote-tracking branch 'upstream/dev' into dev
+
+commit 164e43f0548f1db102dbdd2d47028101fd513d6b
+Merge: b7f87642 f9aa6012
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 13:32:57 2019 +1300
+
+    Merge remote-tracking branch 'upstream/dev' into upgrade/rails-5-2
+
+commit b7f876429ad18c7ed382e2aa4737875d530f44c6
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 13:31:09 2019 +1300
+
+    Upgrade to ruby 2.6.0
+
+commit f9aa6012aa4967e320c9fec5c84006088b2e1557
+Merge: b18b397e a6a75050
+Author: Cesy <cesy.avon@gmail.com>
+Date:   Mon Dec 31 23:29:28 2018 +0000
+
+    Merge pull request #1765 from Br3nda/fix/1764
+    
+    Make mail sender host configurable
+
+commit a43c2354233053d130d539050450ea0a6fce9505
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 10:28:19 2019 +1300
+
+    Upgrade to Rails 5.2
+
+commit a6a75050bb13a75649862714b60c26356dce7097
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 09:55:29 2019 +1300
+
+    Make mail sender host configurable
+
+commit b18b397e1c1db2e6957b61af662e12d032defba4
+Merge: fb03923f e30b179b
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Tue Jan 1 08:45:52 2019 +1300
+
+    Merge pull request #1511 from Br3nda/upgrade/rails-5
+    
+    Upgrade to rails 5
+
+commit 73e9a941676bb060c92ed628d7b8f5df43da147f
+Merge: ca0ad089 fb03923f
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Mon Dec 31 23:19:42 2018 +1300
+
+    Merge remote-tracking branch 'upstream/dev' into dev
+
+commit ca0ad089236418bbfec0b37515c4f651c6a511c6
+Merge: 9a0fa34c ea67df0d
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Thu Sep 13 22:39:39 2018 +1200
+
+    Merge remote-tracking branch 'upstream/dev' into dev
+
+commit 9a0fa34c0ad453d6118975b9fb0fd77d7bb21d22
+Author: Brenda Wallace <brenda@wallace.net.nz>
+Date:   Sun Sep 9 09:55:43 2018 +1200
+
+    Style fix up

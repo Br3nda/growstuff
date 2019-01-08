@@ -23,6 +23,10 @@ module PredictHarvest
       planted_at + crop.median_days_to_last_harvest.days
     end
 
+    def days_until_first_harvest_predicted(at_date=Time.zone.today)
+      (at_date - first_harvest_predicted_at).to_i * -1
+    end
+
     # actions
     def update_harvest_days!
       days_to_first_harvest = nil
@@ -35,23 +39,22 @@ module PredictHarvest
     end
 
     # status
-    def harvest_time?
-      return false if crop.perennial || finished
+    def harvesting?(at_date=Time.zone.today)
+      return false if crop.perennial || finished?(at_date)
 
       # We have harvests but haven't finished
-      harvests.size.positive? ||
+      harvests.where('harvested_at >= ?', at_date).size.positive? ||
 
         # or, we don't have harvests, but we predict we should by now
         (first_harvest_predicted_at.present? &&
           harvests.empty? &&
-          first_harvest_predicted_at < Time.zone.today)
+          first_harvest_predicted_at < at_date)
     end
 
-    def before_harvest_time?
+    def before_harvesting?(at_date=Time.zone.today)
       first_harvest_predicted_at.present? &&
         harvests.empty? &&
-        first_harvest_predicted_at.present? &&
-        first_harvest_predicted_at > Time.zone.today
+        first_harvest_predicted_at > at_date
     end
 
     private

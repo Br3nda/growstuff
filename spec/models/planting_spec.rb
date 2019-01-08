@@ -150,16 +150,16 @@ describe Planting do
       describe 'harvest still growing' do
         let(:planting) { FactoryBot.create :planting, crop: crop, planted_at: Time.zone.today }
 
-        it { expect(planting.before_harvest_time?).to eq true }
-        it { expect(planting.harvest_time?).to eq false }
+        it { expect(planting.before_harvesting?).to eq true }
+        it { expect(planting.harvesting?).to eq false }
       end
 
       describe 'harvesting ready now' do
         let(:planting) { FactoryBot.create :planting, crop: crop, planted_at: 21.days.ago }
 
         it { expect(planting.first_harvest_predicted_at).to eq(1.day.ago.to_date) }
-        it { expect(planting.before_harvest_time?).to eq false }
-        it { expect(planting.harvest_time?).to eq true }
+        it { expect(planting.before_harvesting?).to eq false }
+        it { expect(planting.harvesting?).to eq true }
       end
     end
 

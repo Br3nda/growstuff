@@ -15,9 +15,9 @@ module PhotosHelper
     end
   end
 
-  def planting_image_path(planting)
-    if planting.photos.present?
-      planting.photos.order(date_taken: :desc).first.thumbnail_url
+  def planting_image_path(planting, before_date=Time.zone.now)
+    if planting.photos.where('date_taken <= ?', before_date).size.positive?
+      planting.photo(before_date).thumbnail_url
     else
       placeholder_image
     end
@@ -25,7 +25,7 @@ module PhotosHelper
 
   def harvest_image_path(harvest)
     if harvest.photos.present?
-      harvest.photos.order(date_taken: :desc).first.thumbnail_url
+      harvest.default_photo.thumbnail_url
     elsif harvest.planting.present?
       planting_image_path(harvest.planting)
     else

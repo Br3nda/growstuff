@@ -54,6 +54,9 @@ gem 'sidekiq'
 # Markdown formatting for updates etc
 gem 'bluecloth'
 
+gem "simple_calendar", "~> 2.0"
+gem 'ruby-seasons', :git => 'https://github.com/br3nda/ruby-seasons.git'
+
 # Pagination
 gem 'will_paginate'
 
