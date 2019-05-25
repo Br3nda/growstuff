@@ -36,6 +36,7 @@ script:
       RAILS_ENV=test bundle exec rake db:create db:migrate search:create;
       bundle exec rake assets:precompile;
       bundle exec rspec --tag $RSPEC_TAG spec/;
+      ./scripts/percy.sh
     fi;
   - set +e
 after_script:
