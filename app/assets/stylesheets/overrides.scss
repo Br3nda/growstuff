@@ -33,6 +33,10 @@ a:hover {
   background-color: $beige;
 }
 
+.global-actions a{
+  font-size: 300%;
+}
+
 span.badge {
   background-color: $brown;
 
@@ -95,13 +99,17 @@ h3 {
   }
 }
 
-.img-square {
+img.img-icon {
+  width: 1em;
+}
+
+img.img-square {
   object-fit: cover;
   height: 150px;
   width: 150px;
 }
 
-.img-card {
+img.img-card {
   object-fit: cover;
   height: 180px;
   width: 100%;

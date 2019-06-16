@@ -1,12 +1,17 @@
 module IconsHelper
   include FontAwesome::Sass::Rails::ViewHelpers
 
+  def icon_size
+    30
+  end
+
+
   def garden_icon
-    icon('fas', 'square')
+    image_icon 'garden'
   end
 
   def planting_icon
-    icon('fas', 'seedling')
+    image_icon 'plant'
   end
 
   def member_icon
@@ -14,11 +19,11 @@ module IconsHelper
   end
 
   def harvest_icon
-    icon('fas', 'carrot')
+    image_icon 'harvest'
   end
 
   def seed_icon
-    icon('fas', 'heart')
+    image_icon 'seeds'
   end
 
   def comment_icon
@@ -26,7 +31,7 @@ module IconsHelper
   end
 
   def finished_icon
-    icon('fas', 'calendar')
+    image_icon 'finished'
   end
 
   def edit_icon
@@ -34,7 +39,7 @@ module IconsHelper
   end
 
   def delete_icon
-    icon('fas', 'trash-alt')
+    image_icon 'delete'
   end
 
   def photo_icon
@@ -46,7 +51,7 @@ module IconsHelper
   end
 
   def blog_icon
-    icon('fas', 'comments')
+    image_icon 'post'
   end
 
   def perennial_icon
@@ -71,5 +76,11 @@ module IconsHelper
     else
       image_tag("sunniness_not_specified.png", class: 'img', alt: 'unknown', width: 55)
     end
+  end
+
+  private
+
+  def image_icon(icon)
+    image_tag "icons/#{icon}.svg", class: 'img img-icon'
   end
 end
