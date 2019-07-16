@@ -1,7 +1,10 @@
 body {
   background-color: $beige;
   font-family: $font-family-sans-serif;
+  padding: 0;
+  margin: 0;
 }
+
 
 section {
   padding-top: 1em;
@@ -257,6 +260,9 @@ footer {
 
 #maincontainer {
   min-height: 80%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 #global-actions {
@@ -380,8 +386,9 @@ ul.thumbnail-buttons {
   }
 }
 
-
-.form-page {
+body.form-page {
+  background-image: image-url('garden-photo.jpg');
+  width: 100%;
   text-align: center;
 
   .form-card {
@@ -389,7 +396,7 @@ ul.thumbnail-buttons {
     margin-top: 0.5em;
     max-width: 800px;
     padding: 1em;
-    text-align: center;
+    text-align: left;
   }
 
   .crop-card {

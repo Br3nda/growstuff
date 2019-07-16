@@ -2,7 +2,7 @@
 %html{ lang: "en", prefix: "og: https://ogp.me/ns#" }
   = yield :scripts
   = render "layouts/meta"
-  %body
+  %body{ class: content_for?(:body_tag) ? yield(:body_tag) : '' }
     .sr-only= link_to t(".skip"), "#skipnav"
     = render "layouts/header"
     -# anchor tag for accessibility link to skip the navigation menu
