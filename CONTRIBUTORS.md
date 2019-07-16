@@ -94,3 +94,7 @@ submit the change with your pull request.
 ### Security and Dependency Updates
 - DeppBot / [deppbot](https://github.com/deppbot)
 - dependabot-preview[bot] [dependabot](https://github.com/dependabot-bot) / [dependabot-preview](https://github.com/apps/dependabot-preview)
+
+## Photo credit
+
+  - Photo by Ellen Thompson CC BY 2.0 https://www.flickr.com/photos/eethompson/19331680545/
