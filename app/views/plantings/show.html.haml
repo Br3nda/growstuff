@@ -25,6 +25,12 @@
 
     .col-md-8.col-xs-12
       %section= render 'facts', planting: @planting
+
+      - if @planting.crop.perennial? 
+        %section
+          %h2 Harvest months
+          %p= render 'plantings/harvest_year', planting: @planting
+
       - if @planting.description.present?
         %hr/
         = cute_icon

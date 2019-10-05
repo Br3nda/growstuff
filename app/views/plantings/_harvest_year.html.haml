@@ -1,0 +1,7 @@
+.container
+  .row
+    - for offset in 0..11 do
+      - if planting.harvests.where("extract(MONTH FROM harvested_at) = ?", (Time.zone.today + offset.months).month).count.positive?
+        .col-2.planting--harvesting.shadow= I18n.t('date.abbr_month_names')[(Time.zone.today + offset.months).month]
+      - else
+        .col-2.text-muted= I18n.t('date.abbr_month_names')[(Time.zone.today + offset.months).month]
