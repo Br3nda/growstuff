@@ -3,6 +3,9 @@ class Crop < ApplicationRecord
   include PhotoCapable
   include OpenFarmData
   friendly_id :name, use: %i(slugged finders)
+  acts_as_taggable
+  acts_as_taggable_on :categories
+  acts_as_taggable_on :hardiness
 
   ##
   ## Relationships

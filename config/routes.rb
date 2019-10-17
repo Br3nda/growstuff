@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     post :openfarm
 
     collection do
+      get :autocomplete_category_name
       get 'requested'
       get 'wrangle'
       get 'hierarchy'

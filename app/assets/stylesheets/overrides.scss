@@ -28,6 +28,10 @@ a:hover {
   text-decoration: none;
 }
 
+.badge a {
+  color: $white;
+}
+
 h1 {
   font-size: 250%;
 }
@@ -185,6 +189,29 @@ img.avatar {
 
 ul.associations {
   list-style-type: none;
+}
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+  background-color: $white;
+  padding: 5px 20px;
+  border: 2px solid $beige;
+  border-radius: 4px;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: $green;
+  color: $white;
+}
+
+.radio-toolbar input[type="radio"]:focus + label {
+  border: 2px $black;
 }
 
 // footer

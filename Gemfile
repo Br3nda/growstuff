@@ -37,6 +37,7 @@ gem 'active_record_union'
 gem 'flickraw'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'rails-jquery-autocomplete'
 gem 'js-routes' # provides access to Rails routes in Javascript
 
 gem 'cancancan'                    # for checking member privileges
@@ -120,6 +121,8 @@ gem 'mailboxer'
 
 gem 'faraday'
 gem 'faraday_middleware'
+
+gem 'acts-as-taggable-on', '~> 6.0'
 
 group :production do
   gem 'bonsai-elasticsearch-rails' # Integration with Bonsa-Elasticsearch on heroku

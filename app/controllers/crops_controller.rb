@@ -6,9 +6,11 @@ class CropsController < ApplicationController
   skip_authorize_resource only: %i(hierarchy search)
   respond_to :html, :json, :rss, :csv, :svg
   responders :flash
+  autocomplete :category, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
   def index
     @sort = params[:sort]
+    @tag = params[:tag]
     @crops = crops
     @num_requested_crops = requested_crops.size if current_member
     @filename = filename
@@ -51,7 +53,7 @@ class CropsController < ApplicationController
 
     @crops = CropSearchService.search(
       @term, page:           params[:page],
-             per_page:       12,
+             per_page:       100,
              current_member: current_member
     )
     respond_with @crops
@@ -185,6 +187,7 @@ class CropsController < ApplicationController
       :request_notes,
       :reason_for_rejection,
       :rejection_notes,
+      category_list: [],
       scientific_names_attributes: %i(scientific_name
                                       _destroy
                                       id)
@@ -212,6 +215,7 @@ class CropsController < ApplicationController
   def crops
     q = Crop.approved.includes(:scientific_names, plantings: :photos)
     q = q.popular unless @sort == 'alpha'
+    q = q.tagged_with(@tag) if @tag.present?
     q.order(Arel.sql("LOWER(crops.name)"))
       .includes(:photos).paginate(page: params[:page])
   end

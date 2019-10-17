@@ -1,25 +1,23 @@
 - content_for :title, t('.title')
 
-- content_for :buttonbar do
-  - if can? :wrangle, Crop
-    = link_to 'Wrangle Crops', wrangle_crops_path, class: 'btn btn-secondary'
-  - if can? :create, Crop
-    = link_to 'Add New Crop', new_crop_path, class: 'btn btn-primary'
 
 - content_for :breadcrumbs do
   %li.breadcrumb-item.active= link_to 'Crops', crops_path
 
-= bootstrap_form_tag(url: crops_path, method: :get, layout: :inline) do |f|
-  .input-group
-    = f.select "sort",
-                 options_for_select({ "popularity": 'popular',
-                                      "alphabetically": 'alpha' },
-                                      @sort || 'popular'),
-                 label: 'Sort by'
-    = f.submit "Show"
+.row
+  .col
+    %h1= t('.title')
+  .col
+    - if can? :wrangle, Crop
+      = link_to 'Wrangle Crops', wrangle_crops_path, class: 'btn btn-secondary'
+    - if can? :create, Crop
+      = link_to 'Add New Crop', new_crop_path, class: 'btn btn-primary'
+
+= render 'crops/filter'
+
 
 %section.crops
-  %h2= t('.title')
+  %h2 Crops
   = will_paginate @crops
   .index-cards
     - @crops.each do |crop|
@@ -27,8 +25,11 @@
 
   = will_paginate @crops
 
-%ul.list-inline
-  %li The data on this page is available in the following formats:
-  %li= link_to "CSV", crops_path(format: 'csv')
-  %li= link_to "JSON", crops_path(format: 'json')
-  %li= link_to "RSS", crops_path(format: 'rss')
+%section.open-data
+  %h3= t('label.data')
+  %ul.nav#open-data
+    - ['csv', 'json', 'rss'].each do |format|
+      %li.list-group-item
+        = link_to crops_path(format: format) do
+          = icon 'fas', format.to_s
+          = format.upcase

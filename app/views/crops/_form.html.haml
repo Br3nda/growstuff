@@ -24,26 +24,30 @@
 
       -# Everyone (wranglers and requesters) sees the basic info section
       %h2 Basic information
-
-      .form-group#new_crop
-      = f.text_field :name
-      %span.help-block
-        The common name for the crop, in English (required).
+      = f.form_group :user do
+        = f.text_field :name, explanation:  'The common name for the crop, in English (required).'
         - if can? :wrangle, @crop
-          Wranglers: please ensure this is singular, and capitalize
-          proper nouns only.
+          %p Wranglers: please ensure this is singular, and capitalize proper nouns only.
 
       %h2 Lifespan
       %p
-        = f.radio_button(:perennial, false, label: 'Annual')
-        %span.help-block Living and reproducing in a single year or less
-      %p
-        = f.radio_button(:perennial, true, label: "Perennial")
-        %span.help-block Living more than two years
+        = f.radio_button :perennial, false, label: 'Annual. Living and reproducing in a single year or less', inline: true
+        = f.radio_button :perennial, true, label: "Perennial. Living more than two years", inline: true
+
+      - if can? :wrangle, @crop
+        %h2 Category
+        %p
+          e.g. herb, tree, grain
+          = f.autocomplete_field :category_list, autocomplete_category_name_crops_path,
+                                      value: f.object.category_list.to_s,
+                                      'data-delimiter' => ',
+                                      ', 'data-auto-focus' => true,
+                                      class: 'form-control',
+                                      multiple: true
 
       - unless @crop.approved?
         = link_to 'Search wikipedia', "https://en.wikipedia.org/w/index.php?search=#{@crop.name}", target: '_blank'
-      = f.text_field :en_wikipedia_url, id: "en_wikipedia_url", label: 'Wikipedia URL'
+      = f.url_field :en_wikipedia_url, id: "en_wikipedia_url", label: 'Wikipedia URL'
       %span.help-block
         Link to the crop's page on the English language Wikipedia (required).
 

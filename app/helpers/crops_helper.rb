@@ -1,4 +1,6 @@
 module CropsHelper
+  include ActsAsTaggableOn::TagsHelper
+
   def display_seed_availability(member, crop)
     total_quantity = 0
 

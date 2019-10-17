@@ -1,0 +1,17 @@
+= bootstrap_form_tag(url: crops_path, method: :get, layout: :inline) do |f|
+  sort by:
+  .radio-toolbar
+    %input#popular{checked: (@sort == 'popular'), name: "sort", type: "radio", value: "popular", onchange: 'this.form.submit()'}/
+    %label{for: "popular"} Popularity
+    %input#alpha{checked: (@sort == 'alpha'), name: "sort", type: "radio", value: "alpha", onchange: 'this.form.submit()'}/
+    %label{for: "alpha"} Alphabetically
+  = f.hidden_field :tag, value: @tag
+
+%p
+  filter to:
+  - Crop.tag_counts_on(:categories).order(:name).each do |tag|
+    %span.badge{class: @tag == tag.to_s ? 'badge-info' : 'badge-dark'}
+      = link_to crops_path(tag: tag.to_s, sort: @sort) do
+        = tag.name
+  %span.badge.badge-primary= link_to 'all', crops_path
+

@@ -16,6 +16,9 @@
 = render 'approval_status_message', crop: @crop
 .jumbotron= render 'crops/info'
 
+- @crop.category_list.each do |category|
+  = category
+
 .row
   .col-md-9= render 'crops/actions', crop: @crop
   .col-md-3= render 'wrangle', crop: @crop
