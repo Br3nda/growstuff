@@ -14,6 +14,8 @@ gem 'sass-rails'
 
 # API data
 gem 'jsonapi-resources'
+gem 'jsonapi-swagger'
+gem 'rswag'
 
 # CSS framework
 gem "bootstrap", ">= 4.3.1"
@@ -54,9 +56,6 @@ gem 'unicorn'                      # http server
 
 gem "comfortable_mexican_sofa", "~> 2.0.0"
 
-gem 'bootstrap-kaminari-views'     # bootstrap views for kaminari
-gem 'kaminari'                     # pagination
-
 gem 'active_utils'
 gem 'sidekiq'
 
@@ -72,6 +71,9 @@ gem 'devise'
 
 # nicely formatted URLs
 gem 'friendly_id'
+
+# validates URLs
+gem "validate_url"
 
 # gravatars
 gem 'gravatar-ultimate'
@@ -117,6 +119,9 @@ gem 'rack-protection', '>= 2.0.1'
 
 # Member to member messaging system
 gem 'mailboxer'
+
+gem 'faraday'
+gem 'faraday_middleware'
 
 group :production do
   gem 'bonsai-elasticsearch-rails' # Integration with Bonsa-Elasticsearch on heroku

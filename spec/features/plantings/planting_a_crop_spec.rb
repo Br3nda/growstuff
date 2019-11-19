@@ -2,8 +2,8 @@ require "rails_helper"
 require 'custom_matchers'
 
 describe "Planting a crop", :js, :elasticsearch do
-  let!(:maize) { FactoryBot.create :maize                 }
-  let(:garden) { FactoryBot.create :garden, owner: member }
+  let!(:maize) { FactoryBot.create :maize }
+  let(:garden) { FactoryBot.create :garden, owner: member, name: 'Orchard' }
   let!(:planting) do
     FactoryBot.create :planting, garden: garden, owner: member, planted_at: Date.parse("2013-03-10")
   end
@@ -50,7 +50,9 @@ describe "Planting a crop", :js, :elasticsearch do
     describe "Clicking link to owner's profile" do
       before do
         visit member_plantings_path(member)
-        click_link "View #{member}'s profile >>"
+        within '.login-name' do
+          click_link member.login_name
+        end
       end
       it { expect(current_path).to eq member_path(member) }
     end
@@ -116,7 +118,7 @@ describe "Planting a crop", :js, :elasticsearch do
 
         expect(page).to have_content "planting was successfully created"
         expect(page).not_to have_content "0%"
-        expect(page).not_to have_content "Finished"
+        expect(page).not_to have_content "Finish expected"
         expect(page).not_to have_content "Finishes"
       end
 
@@ -160,16 +162,8 @@ describe "Planting a crop", :js, :elasticsearch do
 
     it "Planting from crop page" do
       visit crop_path(maize)
-      within '.crop-actions' do
-        click_link "Plant maize"
-      end
-      within "form#new_planting" do
-        expect(page).to have_selector "input[value='maize']"
-      end
-
-      choose(member.gardens.first.name)
-      click_button "Save"
-
+      click_link "Add to garden"
+      click_link "Orchard"
       expect(page).to have_content "planting was successfully created"
       expect(page).to have_content "maize"
     end
@@ -224,7 +218,7 @@ describe "Planting a crop", :js, :elasticsearch do
       end
       expect(page).to have_content "planting was successfully created"
       expect(page).to have_content "Finished"
-      expect(page).to have_content "30 Aug"
+      expect(page).to have_content "Aug 2014"
 
       # shouldn't be on the page
       visit plantings_path

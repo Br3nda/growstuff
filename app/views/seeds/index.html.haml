@@ -1,17 +1,3 @@
-- content_for :title, title('seeds', @owner, @crop, @planting)
-%h1
-  = seed_icon
-  = title('seeds', @owner, @crop, @planting)
-
-- if @owner
-  = link_to "View #{@owner}'s profile >>", member_path(@owner)
-
-%p
-  #{ENV['GROWSTUFF_SITE_NAME']} helps you track your seed
-  stash or trade seeds with other members.
-
-= render 'layouts/nav', model: Seed
-
 - content_for :breadcrumbs do
   - if @owner
     %li.breadcrumb-item= link_to 'Seeds', seeds_path
@@ -19,32 +5,42 @@
   - else
     %li.breadcrumb-item.active= link_to 'Seeds', seeds_path
 
+- content_for :title, title('seeds', @owner, @crop, @planting)
+%h1.display-2.text-center
+  = seed_icon
+  = title('seeds', @owner, @crop, @planting)
 
-- unless @seeds.empty?
-  .pagination
-    = page_entries_info @seeds
-    = will_paginate @seeds
-  .index-cards= render @seeds, full: true
-
-  .pagination
-    = page_entries_info @seeds
-    = will_paginate @seeds
-
-  %ul.nav.justify-content-center
-    %li.nav-item
-      The data on this page is available in the following formats:
+.row
+  .col-md-2
+    = render 'layouts/nav', model: Seed
+    %hr/
+    = link_to show_inactive_tickbox_path('seeds', owner: @owner, crop: @crop, show_all: @show_all) do
+      = check_box_tag 'active', 'all', @show_all
+      include finished
+    %hr/
     - if @owner
-      %li.nav-item
-        = link_to "CSV", member_seeds_path(@owner, format: 'csv'), class: 'nav-link'
-      %li.nav-item
-        = link_to "JSON", member_seeds_path(@owner, format: 'json'), class: 'nav-link'
-      %li.nav-item
-        = link_to "RSS", member_seeds_path(@owner, format: 'rss'), class: 'nav-link'
-    - else
-      %li.nav-item
-        = link_to "CSV", seeds_path(format: 'csv'), class: 'nav-link'
-      %li.nav-item
-        = link_to "JSON", seeds_path(format: 'json'), class: 'nav-link'
-      %li.nav-item
-        = link_to "RSS", seeds_path(format: 'rss'), class: 'nav-link'
+      = render @owner
+    - if @crop
+      = render @crop
+
+    %section.open-data
+      %h2 Open Data
+      %p= t('label.data')
+      - ['csv', 'json', 'rss'].each do |format|
+        .badge.badge-info
+          = link_to (@owner ? member_seeds_path(@owner, format: format) : seeds_path(format: format)) do
+            = icon 'fas', format.to_s
+            = format.upcase
+      .badge.badge-success= link_to 'API Methods', '/api-docs'
+  .col-md-10
+    %section
+      %h2= page_entries_info @seeds
+      = will_paginate @seeds
+
+      .index-cards
+        - @seeds.each do |seed|
+          = render 'seeds/card', seed: seed
+
+      = will_paginate @seeds
+
 

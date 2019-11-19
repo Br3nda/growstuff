@@ -33,6 +33,8 @@ class Planting < ApplicationRecord
   ##
   ## Scopes
   scope :active, -> { where('finished <> true').where('finished_at IS NULL OR finished_at < ?', Time.zone.now) }
+  scope :annual, -> { joins(:crop).where(crops: { perennial: false }) }
+  scope :perennial, -> { joins(:crop).where(crops: { perennial: true }) }
   scope :interesting, -> { has_photos.one_per_owner.order(planted_at: :desc) }
   scope :recent, -> { order(created_at: :desc) }
   scope :one_per_owner, lambda {
@@ -43,10 +45,12 @@ class Planting < ApplicationRecord
 
   ##
   ## Delegations
-  delegate :name, :en_wikipedia_url, :default_scientific_name, :plantings_count,
+  delegate :name, :slug, :en_wikipedia_url, :default_scientific_name, :plantings_count,
            to: :crop, prefix: true
 
-  delegate :annual?, to: :crop
+  delegate :annual?, :svg_icon, to: :crop
+  delegate :location, :longitude, :latitude, to: :garden
+
   ##
   ## Validations
   validates :garden, presence: true
@@ -73,11 +77,6 @@ class Planting < ApplicationRecord
       garden.present? ? garden.name : 'null',
       crop.present? ? crop.name : 'null'
     ].join('-').tr(' ', '-').downcase
-  end
-
-  # location = garden owner + garden name, i.e. "Skud's backyard"
-  def location
-    I18n.t("gardens.location", garden: garden.name, owner: garden.owner.login_name)
   end
 
   # stringify as "beet in Skud's backyard" or similar

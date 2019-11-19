@@ -54,7 +54,8 @@ module ApplicationHelper
     end
 
     Gravatar.new(member.email).image_url(size:    size,
-                                         default: :identicon)
+                                         default: :identicon,
+                                         ssl:     true)
   end
 
   # Returns a string with the quantity and the right pluralization for a
@@ -63,15 +64,17 @@ module ApplicationHelper
     pluralize(collection.size, model.model_name.to_s.downcase)
   end
 
-  def show_inactive_tickbox_path(type, owner, show_all)
+  def show_inactive_tickbox_path(type, owner: nil, crop: nil, show_all: false)
     all = show_all ? '' : 1
-    if owner
-      return member_plantings_path(owner, all: all) if type == 'plantings'
-      return member_gardens_path(owner, all: all) if type == 'gardens'
-    end
 
-    return plantings_path(all: all) if type == 'plantings'
-    return gardens_path(all: all) if type == 'gardens'
+    path = if owner.present?
+             public_send("member_#{type}_path", owner, all: all)
+           elsif crop.present?
+             public_send("crop_#{type}_path", crop, all: all)
+           else
+             public_send("#{type}_path", all: all)
+           end
+    path
   end
 
   def title(type, owner, crop, planting)

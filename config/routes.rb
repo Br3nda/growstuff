@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   get '/robots.txt' => 'robots#robots'
 
   resources :garden_types
@@ -57,7 +59,6 @@ Rails.application.routes.draw do
   resources :photo_associations, only: :destroy
 
   resources :crops, param: :slug, concerns: :has_photos do
-    get 'gardens' => 'gardens#index'
     get 'harvests' => 'harvests#index'
     get 'plantings' => 'plantings#index'
     get 'seeds' => 'seeds#index'
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
     get 'sunniness' => 'charts/crops#sunniness', constraints: { format: 'json' }
     get 'planted_from' => 'charts/crops#planted_from', constraints: { format: 'json' }
     get 'harvested_for' => 'charts/crops#harvested_for', constraints: { format: 'json' }
+    post :openfarm
 
     collection do
       get 'requested'
@@ -79,7 +81,6 @@ Rails.application.routes.draw do
   end
 
   resources :comments
-  resources :roles
   resources :forums
 
   resources :follows, only: %i(create destroy)
@@ -98,7 +99,11 @@ Rails.application.routes.draw do
   end
 
   resources :messages
-  resources :conversations
+  resources :conversations do
+    collection do
+      delete 'destroy_multiple'
+    end
+  end
 
   resources :places, only: %i(index show), param: :place do
     get 'search', on: :collection
@@ -108,21 +113,25 @@ Rails.application.routes.draw do
   get 'members/auth/:provider/callback' => 'authentications#create'
 
   scope :admin do
-    resources :members, param: :slug, controller: 'admin/members', as: 'admin_members'
     get '/' => 'admin#index', as: 'admin'
     get '/newsletter' => 'admin#newsletter', as: 'admin_newsletter'
     comfy_route :cms_admin, path: '/cms'
   end
 
+  namespace :admin do
+    resources :members, param: :slug
+    resources :roles
+  end
+
   namespace :api do
     namespace :v1 do
-      jsonapi_resources :photos
       jsonapi_resources :crops
-      jsonapi_resources :plantings
       jsonapi_resources :gardens
       jsonapi_resources :harvests
-      jsonapi_resources :seeds
       jsonapi_resources :members
+      jsonapi_resources :photos
+      jsonapi_resources :plantings
+      jsonapi_resources :seeds
     end
   end
 
