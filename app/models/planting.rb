@@ -103,15 +103,13 @@ class Planting < ApplicationRecord
     planted? && !finished?
   end
 
+  def harvest_months
+    crop.harvest_months(latitude)
+  end
+
   def nearby_same_crop
     return Planting.none if location.blank?
-
-    # latitude, longitude = Geocoder.coordinates(location, params: { limit: 1 })
-    Planting.joins(:garden)
-      .where(crop: crop)
-      .located
-      .where('gardens.latitude < ? AND gardens.latitude > ?',
-        latitude + 10, latitude - 10)
+    crop.nearby_plantings(latitude)
   end
 
   private

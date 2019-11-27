@@ -172,6 +172,32 @@ class Crop < ApplicationRecord
     OpenfarmService.new.update_crop(self)
   end
 
+  def harvests_near_latitude(latitude)
+    # otherwise use nearby plantings
+    if latitude
+      return Harvest.where(planting: nearby_plantings(latitude).has_harvests)
+          .where.not(planting_id: nil)
+    end
+
+    Harvest.none
+  end
+
+  def harvest_months(latitude)
+    Rails.cache.fetch("#{cache_key_with_version}/#{latitude}/harvest_months", expires_in: 5.minutes) do
+      harvests_near_latitude(latitude).where.not(harvested_at: nil)
+        .group("extract(MONTH from harvested_at)::int")
+        .count
+    end
+  end
+
+  def nearby_plantings(latitude)
+    return Planting.none if latitude.blank?
+
+    Planting.joins(:garden).where(crop: self).located
+      .where('gardens.latitude < ? AND gardens.latitude > ?',
+        latitude + 10, latitude - 10)
+  end
+
   private
 
   def count_uses_of_property(col_name)

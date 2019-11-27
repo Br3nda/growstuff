@@ -16,6 +16,18 @@
 = render 'approval_status_message', crop: @crop
 .jumbotron= render 'crops/info'
 
+- (90..-90).step(-10).each do |latitude|
+  .row
+    .col-2=latitude
+    .col
+      - (1..12).each do |month|
+        - if @crop.harvest_months(latitude).keys().include?(month.to_f)
+          .badge.badge-info.badge-harvesting{id: "month-#{month}"}
+            = I18n.t('date.abbr_month_names')[month]
+        - else
+          .badge.text-muted{'aria-hidden': "true", id: "month-#{month}"}
+            = I18n.t('date.abbr_month_names')[month]
+
 .row
   .col-md-9= render 'crops/actions', crop: @crop
   .col-md-3= render 'wrangle', crop: @crop
