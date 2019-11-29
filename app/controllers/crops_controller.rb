@@ -1,7 +1,7 @@
 require 'will_paginate/array'
 
 class CropsController < ApplicationController
-  before_action :authenticate_member!, except: %i(index hierarchy search show)
+  before_action :authenticate_member!, except: %i(index hierarchy search show map)
   load_and_authorize_resource
   skip_authorize_resource only: %i(hierarchy search)
   respond_to :html, :json, :rss, :csv, :svg
@@ -74,6 +74,10 @@ class CropsController < ApplicationController
         render json: @crop.to_json(crop_json_fields)
       end
     end
+  end
+
+  def map
+    @crop = Crop.find_by!(slug: params[:crop_slug])
   end
 
   def new

@@ -21,6 +21,7 @@ class Ability
     can :planted_from, Crop
     can :harvested_for, Crop
 
+    can :map, Crop
     # except these, which don't make sense if you're not logged in
     cannot :read, Notification
     cannot :read, Authentication

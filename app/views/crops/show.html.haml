@@ -16,6 +16,7 @@
 = render 'approval_status_message', crop: @crop
 .jumbotron= render 'crops/info'
 
+#harvest-by-location
 - (90..-90).step(-10).each do |latitude|
   .row
     .col-2=latitude

@@ -62,6 +62,7 @@ Rails.application.routes.draw do
     get 'harvests' => 'harvests#index'
     get 'plantings' => 'plantings#index'
     get 'seeds' => 'seeds#index'
+    get 'map' => 'crops#map'
 
     get 'places' => 'places#index'
     get 'members' => 'members#index'
@@ -73,10 +74,10 @@ Rails.application.routes.draw do
     post :openfarm
 
     collection do
-      get 'requested'
-      get 'wrangle'
       get 'hierarchy'
+      get 'requested'
       get 'search'
+      get 'wrangle'
     end
   end
 
